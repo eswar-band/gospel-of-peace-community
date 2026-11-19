@@ -1,4 +1,4 @@
-# Modern Church — Website Template
+# Gospel of Peace Community — Website Template
 
 A responsive, front-end website concept for the Modern Church project.
 
