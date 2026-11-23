@@ -1,6 +1,47 @@
 const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 
+
+// Theme switcher: persist the visitor's preference and respect system theme initially.
+const themeToggle = $("#themeToggle");
+const savedTheme = localStorage.getItem("modern-church-theme");
+const preferredTheme = window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  if (themeToggle) {
+    const dark = theme === "dark";
+    themeToggle.querySelector(".theme-icon").textContent = dark ? "☀" : "☾";
+    themeToggle.querySelector(".theme-label").textContent = dark ? "Light" : "Dark";
+    themeToggle.setAttribute("aria-label", `Switch to ${dark ? "light" : "dark"} mode`);
+  }
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#0c1422" : "#f5f3ee");
+}
+applyTheme(savedTheme || preferredTheme);
+themeToggle?.addEventListener("click", () => {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  localStorage.setItem("modern-church-theme", next);
+  applyTheme(next);
+});
+
+// Gentle scroll reveals with staggered cards; gracefully falls back when unsupported.
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.documentElement.classList.add("js-motion");
+  const revealTargets = $$(".section-heading,.section-top,.welcome-visual,.welcome-copy,.mission-grid > *, .value-card,.media-card,.story-card,.gallery-item,.event-row,.featured-event,.live-copy,.live-player,.book-card,.prayer-grid > *, .visit-grid > *, .contact-grid > *");
+  revealTargets.forEach((el, index) => {
+    el.dataset.reveal = "";
+    if (el.matches(".value-card,.media-card,.story-card,.gallery-item,.event-row,.book-card")) el.dataset.revealDelay = String((index % 4) + 1);
+  });
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+  revealTargets.forEach(el => revealObserver.observe(el));
+}
+
 const menuToggle = $("#menuToggle");
 const mainNav = $("#mainNav");
 menuToggle?.addEventListener("click", () => {
