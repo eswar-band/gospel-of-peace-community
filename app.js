@@ -2,25 +2,42 @@ const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 
 
-// Theme switcher: persist the visitor's preference and respect system theme initially.
+// Theme switcher: preserve visitor choice, otherwise follow the operating-system preference.
 const themeToggle = $("#themeToggle");
-const savedTheme = localStorage.getItem("modern-church-theme");
-const preferredTheme = window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  if (themeToggle) {
-    const dark = theme === "dark";
-    themeToggle.querySelector(".theme-icon").textContent = dark ? "☀" : "☾";
-    themeToggle.querySelector(".theme-label").textContent = dark ? "Light" : "Dark";
-    themeToggle.setAttribute("aria-label", `Switch to ${dark ? "light" : "dark"} mode`);
+const themeStorageKey = "gospel-peace-theme";
+const legacyThemeStorageKey = "modern-church-theme";
+const themePreference = window.matchMedia?.("(prefers-color-scheme: dark)");
+function readSavedTheme() {
+  try {
+    return localStorage.getItem(themeStorageKey) || localStorage.getItem(legacyThemeStorageKey);
+  } catch {
+    return null;
   }
-  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#0c1422" : "#f5f3ee");
 }
-applyTheme(savedTheme || preferredTheme);
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+  if (themeToggle) {
+    themeToggle.querySelector(".theme-icon").textContent = isDark ? "☀" : "☾";
+    themeToggle.querySelector(".theme-label").textContent = isDark ? "Light" : "Dark";
+    themeToggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} mode`);
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+  }
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", isDark ? "#0c1422" : "#f5f3ee");
+}
+const savedTheme = readSavedTheme();
+applyTheme(savedTheme || (themePreference?.matches ? "dark" : "light"));
 themeToggle?.addEventListener("click", () => {
-  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-  localStorage.setItem("modern-church-theme", next);
-  applyTheme(next);
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  try {
+    localStorage.setItem(themeStorageKey, nextTheme);
+  } catch {
+    // Theme still works for this visit when browser storage is unavailable.
+  }
+  applyTheme(nextTheme);
+});
+themePreference?.addEventListener?.("change", event => {
+  if (!readSavedTheme()) applyTheme(event.matches ? "dark" : "light");
 });
 
 // Gentle scroll reveals with staggered cards; gracefully falls back when unsupported.
@@ -98,7 +115,7 @@ $("#prayerForm")?.addEventListener("submit", e => {
   e.preventDefault();
   const form = new FormData(e.currentTarget);
   const message = [
-    "Prayer request — Modern Church",
+    "Prayer request — Gospel of Peace Community",
     `Name: ${form.get("name") || "Not provided"}`,
     `Mobile: ${form.get("phone") || "Not provided"}`,
     `Category: ${form.get("category")}`,
