@@ -82,3 +82,81 @@ html[data-theme="dark"] .footer-bottom{border-color:rgba(255,255,255,.12)}
 @media(max-width:1050px){.header-tools{gap:7px}}
 @media(max-width:760px){.theme-toggle{padding:8px 10px}.theme-label{display:none}.main-nav{backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.js-motion [data-reveal]{opacity:1;transform:none}}
+
+
+/* Phase 1 refinement: clearer hierarchy, richer glass surfaces and keyboard access. */
+:root{
+  --glass-border:rgba(255,255,255,.58);
+  --glass-highlight:rgba(255,255,255,.34);
+  --glass-blur:18px;
+  --focus-ring:0 0 0 3px rgba(198,161,91,.38);
+}
+html{scroll-padding-top:100px}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.skip-link{position:fixed;z-index:1000;top:12px;left:12px;padding:12px 18px;border-radius:999px;background:#101b32;color:#fff;transform:translateY(-160%);transition:transform .2s ease}
+.skip-link:focus{transform:translateY(0)}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:0;box-shadow:var(--focus-ring);border-radius:8px}
+button,a{-webkit-tap-highlight-color:transparent}
+.site-header{isolation:isolate}
+.site-header:after{content:"";position:absolute;inset:auto 5% -1px;height:1px;background:linear-gradient(90deg,transparent,rgba(198,161,91,.34),transparent);pointer-events:none}
+.brand-copy strong{letter-spacing:.14em}
+.brand-copy small{letter-spacing:.13em;font-size:8px}
+.theme-toggle{min-height:40px;cursor:pointer}
+.theme-toggle:focus-visible,.menu-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.value-card,.media-card,.prayer-form,.service-card,.story-card,.book-card,.featured-event,.live-player,.contact-card,.map-placeholder{
+  box-shadow:0 18px 52px rgba(23,35,58,.075);
+}
+.value-card,.media-card,.prayer-form,.service-card,.contact-card{
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(var(--glass-blur)) saturate(145%);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(145%);
+}
+.value-card:before,.media-card:before,.prayer-form:before,.service-card:before{
+  content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--glass-highlight),transparent);pointer-events:none;
+}
+.value-card,.media-card,.prayer-form,.service-card{position:relative}
+.section-top h2,.section-heading h2,.welcome-copy h2,.mission-grid h2,.testimony-intro h2,.live-copy h2,.prayer-grid h2,.visit-grid h2,.contact-grid h2{
+  text-wrap:balance;letter-spacing:-.035em;
+}
+.text-link{width:fit-content;text-underline-offset:5px}
+.text-link:hover{text-decoration:underline}
+.filter-chip{min-height:38px;cursor:pointer}
+.filter-chip:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.media-card[hidden]{display:none!important}
+.gallery-item:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.prayer-form input,.prayer-form textarea,.prayer-form select,.member-panel input{
+  min-height:44px;border-radius:10px;transition:border-color .2s ease,background .2s ease,box-shadow .2s ease;
+}
+.prayer-form textarea{min-height:116px;resize:vertical}
+.prayer-form input:focus,.prayer-form textarea:focus,.prayer-form select:focus,.member-panel input:focus{
+  border-color:var(--gold);outline:0;box-shadow:0 0 0 3px rgba(198,161,91,.16);
+}
+.btn{min-height:44px}
+html[data-theme="dark"]{
+  --glass-border:rgba(221,231,244,.12);
+  --glass-highlight:rgba(255,255,255,.13);
+  --focus-ring:0 0 0 3px rgba(223,189,120,.35);
+}
+html[data-theme="dark"] .value-card,
+html[data-theme="dark"] .media-card,
+html[data-theme="dark"] .prayer-form,
+html[data-theme="dark"] .service-card,
+html[data-theme="dark"] .contact-card{
+  background:linear-gradient(145deg,rgba(34,49,72,.86),rgba(18,30,48,.82));
+  border-color:var(--glass-border);
+}
+html[data-theme="dark"] .brand-copy strong,
+html[data-theme="dark"] .brand-copy small{color:#edf0f4}
+html[data-theme="dark"] .skip-link{background:#f2d69c;color:#172338}
+@media(max-width:760px){
+  .brand-copy small{font-size:7px}
+  .main-nav{border-top:1px solid rgba(198,161,91,.2)}
+  .main-nav>a{min-height:44px;display:flex;align-items:center}
+  .header-tools{margin-left:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  .hero-content,.hero-note{animation:none!important}
+  .mission-decoration,.play-button,.live-play{animation:none!important}
+  .gallery-item img{transition:none!important}
+}
