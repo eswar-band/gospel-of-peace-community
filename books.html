@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ee">
+  <meta name="description" content="Explore books, study guides and magazines from Gospel of Peace Community.">
+  <title>Books & Magazines | Gospel of Peace Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="books.css">
+</head>
+<body class="books-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="announcement"><span class="live-dot"></span> Sunday Worship · 9:00 AM & 11:00 AM <a href="index.html#visit">Plan your visit <span aria-hidden="true">↗</span></a></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html#home" aria-label="Gospel of Peace Community home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v40M12 16h24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M7 35c5-7 11-10 17-10s12 3 17 10" fill="none" stroke="#c6a15b" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      <span class="brand-copy"><strong>GOSPEL</strong><small>OF PEACE COMMUNITY</small></span>
+    </a>
+    <div class="header-tools">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch theme"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span></button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    </div>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html#home">Home</a><a href="index.html#about">About</a><a href="media.html">Media</a><a href="testimonies.html">Stories</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a><a class="active" href="books.html" aria-current="page">Books</a><a href="index.html#contact">Contact</a><a class="btn btn-gold nav-cta" href="index.html#prayer">Request Prayer <span>↗</span></a>
+    </nav>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <section class="books-hero"><div class="container books-hero-inner">
+      <div class="eyebrow light"><span></span> READ · REFLECT · GROW</div>
+      <h1>Words that nourish<br><em>your faith.</em></h1>
+      <p>Explore reading resources, study guides and community publications to encourage your walk with Christ.</p>
+      <div class="books-verse"><span>“Blessed is the one… whose delight is in the law of the Lord.”</span><b>PSALM 1:1–2</b></div>
+    </div></section>
+    <section class="books-library section-pad" aria-labelledby="booksTitle"><div class="container">
+      <div class="books-heading"><div><div class="eyebrow"><span></span> THE READING ROOM</div><h2 id="booksTitle">Discover your next <em>read.</em></h2><p>Search the collection or browse by publication type.</p></div><p class="books-count" id="booksCount" aria-live="polite"></p></div>
+      <div class="books-controls">
+        <label class="books-search-label" for="bookSearch">Search publications</label>
+        <div class="books-search"><span aria-hidden="true">⌕</span><input id="bookSearch" type="search" placeholder="Search title, author or topic…" autocomplete="off"></div>
+        <label class="books-category-label" for="bookCategory">Category</label>
+        <select id="bookCategory"><option value="all">All publications</option></select>
+        <label class="books-sort-label" for="bookSort">Sort by</label>
+        <select id="bookSort"><option value="title">Title A–Z</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select>
+      </div>
+      <div class="books-grid" id="booksGrid" aria-live="polite"></div>
+      <div class="books-empty" id="booksEmpty" hidden><span aria-hidden="true">✧</span><h3>No publications found</h3><p>Try a different search term or category.</p><button class="btn btn-dark" type="button" id="clearBooks">Clear filters</button></div>
+      <p class="books-demo-note">This library currently contains illustrative sample entries only. No official church books, magazines or PDF files have been supplied yet. Replace these records with approved publications and verify authorship, publication details and distribution permissions before making files available.</p>
+    </div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-main">
+    <div class="footer-brand"><a class="brand brand-light" href="index.html#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v40M12 16h24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M7 35c5-7 11-10 17-10s12 3 17 10" fill="none" stroke="#c6a15b" stroke-width="2.2" stroke-linecap="round"/></svg></span><span class="brand-copy"><strong>GOSPEL</strong><small>OF PEACE COMMUNITY</small></span></a><p>A place of faith, hope, and love.<br>Growing together. Serving together.</p></div>
+    <div><small class="footer-heading">EXPLORE</small><a href="index.html#about">About us</a><a href="media.html">Messages</a><a href="testimonies.html">Stories</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a><a href="books.html">Books & magazines</a></div>
+    <div><small class="footer-heading">CONNECT</small><a href="index.html#prayer">Prayer request</a><a href="index.html#live">Watch live</a><a href="index.html#contact">Contact</a></div>
+    <div><small class="footer-heading">A VERSE TO CARRY</small><p class="footer-verse">“The Lord bless you and keep you.”</p><b class="verse-ref">NUMBERS 6:24</b></div>
+  </div><div class="container footer-bottom"><span>© 2026 Gospel of Peace Community. All rights reserved.</span><span>Made with faith & purpose.</span><a href="#top">Back to top ↑</a></div></footer>
+  <dialog class="book-dialog" id="bookDialog" aria-labelledby="bookDialogTitle">
+    <div class="book-dialog-head"><div><span id="bookDialogCategory"></span><h2 id="bookDialogTitle">Publication details</h2></div><button type="button" class="modal-close" id="closeBookDialog" aria-label="Close publication details">×</button></div>
+    <div class="book-dialog-body"><div class="book-dialog-cover" id="bookDialogCover" aria-hidden="true">✧</div><div><p class="book-dialog-author" id="bookDialogAuthor"></p><p id="bookDialogDescription"></p><p class="book-dialog-meta" id="bookDialogMeta"></p><div class="book-dialog-actions"><a class="btn btn-gold" id="bookReadLink" href="#" target="_blank" rel="noopener" hidden>Read PDF ↗</a><a class="btn btn-dark" id="bookDownloadLink" href="#" download hidden>Download PDF ↓</a><span class="book-unavailable" id="bookUnavailable">PDF not yet available</span></div></div></div>
+  </dialog>
+  <script src="books-data.js"></script><script src="books.js"></script>
+</body>
+</html>
