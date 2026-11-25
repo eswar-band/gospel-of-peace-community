@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ee">
+  <meta name="description" content="Read stories of faith, hope and encouragement from Gospel of Peace Community.">
+  <title>Stories of Hope | Gospel of Peace Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="testimonies.css">
+</head>
+<body class="testimonies-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="announcement"><span class="live-dot"></span> Sunday Worship · 9:00 AM & 11:00 AM <a href="index.html#visit">Plan your visit <span aria-hidden="true">↗</span></a></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html#home" aria-label="Gospel of Peace Community home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v40M12 16h24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M7 35c5-7 11-10 17-10s12 3 17 10" fill="none" stroke="#c6a15b" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      <span class="brand-copy"><strong>GOSPEL</strong><small>OF PEACE COMMUNITY</small></span>
+    </a>
+    <div class="header-tools">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch theme"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span></button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    </div>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html#home">Home</a><a href="index.html#about">About</a><a href="media.html">Media</a><a class="active" href="testimonies.html" aria-current="page">Stories</a><a href="index.html#events">Events</a><a href="index.html#contact">Contact</a><a class="btn btn-gold nav-cta" href="index.html#prayer">Request Prayer <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="testimonies-hero">
+      <div class="container testimonies-hero-inner">
+        <div class="eyebrow light"><span></span> STORIES OF FAITH · HOPE · LOVE</div>
+        <h1>Every journey holds<br><em>a story of hope.</em></h1>
+        <p>Be encouraged by stories of faith, new beginnings, and the strength found in walking together.</p>
+        <div class="testimonies-verse"><span>“They triumphed over him by the blood of the Lamb and by the word of their testimony.”</span><b>REVELATION 12:11</b></div>
+      </div>
+    </section>
+
+    <section class="testimonies-library section-pad" aria-labelledby="testimonies-title">
+      <div class="container">
+        <div class="testimonies-heading">
+          <div><div class="eyebrow"><span></span> THE COMMUNITY JOURNAL</div><h2 id="testimonies-title">Stories that <em>strengthen faith.</em></h2><p>Take a moment to read, reflect, and be encouraged.</p></div>
+          <p class="testimonies-count" id="testimoniesCount" aria-live="polite">Loading stories…</p>
+        </div>
+
+        <div class="testimonies-controls" aria-label="Filter testimonies">
+          <label class="testimonies-search-label" for="testimonySearch">Search stories</label>
+          <div class="testimonies-search"><span aria-hidden="true">⌕</span><input id="testimonySearch" type="search" placeholder="Search by title, topic, or story…" autocomplete="off"></div>
+          <div class="testimonies-selects">
+            <label>Month<select id="monthFilter"><option value="all">All months</option></select></label>
+            <label>Year<select id="yearFilter"><option value="all">All years</option></select></label>
+            <label>Category<select id="storyCategoryFilter"><option value="all">All categories</option></select></label>
+            <label>Sort<select id="storySort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="title">Title A–Z</option></select></label>
+          </div>
+        </div>
+
+        <div class="testimonies-results"><span id="testimoniesResultsLabel">Browse all stories</span><button type="button" id="clearTestimonyFilters">Clear filters ↺</button></div>
+        <div class="testimonies-grid" id="testimoniesGrid" aria-live="polite" aria-busy="true"></div>
+        <div class="testimonies-empty" id="testimoniesEmpty" hidden><span aria-hidden="true">♡</span><h3>No stories found</h3><p>Try a different month, year, or search term.</p><button class="btn btn-dark" type="button" id="clearEmptyFilters">Clear filters</button></div>
+        <p class="testimonies-demo-note">These are illustrative sample stories for preview only, not verified personal testimonies. Replace them with stories shared and approved by the individuals concerned before publishing.</p>
+      </div>
+    </section>
+
+    <section class="share-story-band">
+      <div class="container share-story-inner"><div><div class="eyebrow light"><span></span> YOUR STORY MATTERS</div><h2>Has God been at work<br><em>in your life?</em></h2><p>Your story may encourage someone else. We would love to hear from you.</p></div><a class="btn btn-gold" href="index.html#contact">Share your story <span>↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand"><a class="brand brand-light" href="index.html#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v40M12 16h24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M7 35c5-7 11-10 17-10s12 3 17 10" fill="none" stroke="#c6a15b" stroke-width="2.2" stroke-linecap="round"/></svg></span><span class="brand-copy"><strong>GOSPEL</strong><small>OF PEACE COMMUNITY</small></span></a><p>A place of faith, hope, and love.<br>Growing together. Serving together.</p></div>
+      <div><small class="footer-heading">EXPLORE</small><a href="index.html#about">About us</a><a href="media.html">Messages</a><a href="testimonies.html">Stories</a><a href="index.html#events">Events</a></div>
+      <div><small class="footer-heading">CONNECT</small><a href="index.html#prayer">Prayer request</a><a href="index.html#live">Watch live</a><a href="index.html#contact">Contact</a></div>
+      <div><small class="footer-heading">A VERSE TO CARRY</small><p class="footer-verse">“The Lord bless you and keep you.”</p><b class="verse-ref">NUMBERS 6:24</b></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Gospel of Peace Community. All rights reserved.</span><span>Made with faith & purpose.</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <dialog class="testimony-dialog" id="testimonyDialog" aria-labelledby="dialogStoryTitle">
+    <div class="testimony-dialog-head"><div><span id="dialogStoryMeta"></span><h2 id="dialogStoryTitle">A story of hope</h2></div><button type="button" id="closeTestimony" class="modal-close" aria-label="Close story">×</button></div>
+    <div class="testimony-dialog-body"><p class="testimony-dialog-quote" id="dialogStoryQuote"></p><div id="dialogStoryBody"></div><p class="testimony-dialog-author" id="dialogStoryAuthor"></p></div>
+  </dialog>
+  <script src="testimonies-data.js"></script>
+  <script src="testimonies.js"></script>
+</body>
+</html>
