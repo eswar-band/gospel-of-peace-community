@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ee">
+  <meta name="description" content="Watch messages, worship, prayer and encouragement from Gospel of Peace Community.">
+  <title>Messages & Media | Gospel of Peace Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="media.css">
+</head>
+<body class="media-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="announcement"><span class="live-dot"></span> Sunday Worship · 9:00 AM & 11:00 AM <a href="index.html#visit">Plan your visit <span aria-hidden="true">↗</span></a></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html#home" aria-label="Gospel of Peace Community home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v40M12 16h24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M7 35c5-7 11-10 17-10s12 3 17 10" fill="none" stroke="#c6a15b" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      <span class="brand-copy"><strong>GOSPEL</strong><small>OF PEACE COMMUNITY</small></span>
+    </a>
+    <div class="header-tools">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch theme"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span></button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    </div>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html#home">Home</a><a href="index.html#about">About</a><a class="active" href="media.html" aria-current="page">Media</a><a href="index.html#stories">Stories</a><a href="index.html#events">Events</a><a href="index.html#contact">Contact</a><a class="btn btn-gold nav-cta" href="index.html#prayer">Request Prayer <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="media-hero">
+      <div class="container media-hero-inner">
+        <div class="eyebrow"><span></span> WATCH · LISTEN · GROW</div>
+        <h1>Messages for your <em>journey.</em></h1>
+        <p>Find teaching, worship, prayer and encouragement to carry with you through the week.</p>
+        <div class="media-verse"><span>“Your word is a lamp for my feet, a light on my path.”</span><b>PSALM 119:105</b></div>
+      </div>
+    </section>
+
+    <section class="media-library section-pad" aria-labelledby="library-title">
+      <div class="container">
+        <div class="media-library-heading">
+          <div><div class="eyebrow"><span></span> THE MEDIA LIBRARY</div><h2 id="library-title">Explore the <em>library.</em></h2></div>
+          <p id="mediaCount" class="media-count" aria-live="polite">Loading media…</p>
+        </div>
+
+        <div class="media-controls">
+          <label class="media-search-label" for="mediaSearch">Search messages</label>
+          <div class="media-search-wrap"><span aria-hidden="true">⌕</span><input id="mediaSearch" type="search" placeholder="Search by title or topic…" autocomplete="off"></div>
+          <div class="media-selects">
+            <label>Platform
+              <select id="platformFilter"><option value="all">All platforms</option><option>YouTube</option><option>Facebook</option><option>Instagram</option></select>
+            </label>
+            <label>Category
+              <select id="categoryFilter"><option value="all">All categories</option><option>Sermon</option><option>Worship</option><option>Prayer</option><option>Encouragement</option></select>
+            </label>
+            <label>Sort
+              <select id="sortOrder"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="title">Title A–Z</option></select>
+            </label>
+          </div>
+        </div>
+
+        <div class="media-results-top"><span>Browse all content</span><button id="clearFilters" class="text-link" type="button">Clear filters ↺</button></div>
+        <div class="media-library-grid" id="mediaGrid" aria-live="polite" aria-busy="true"></div>
+        <div class="media-empty" id="mediaEmpty" hidden><span aria-hidden="true">⌕</span><h3>No messages found</h3><p>Try another search or clear one of the filters.</p><button class="btn btn-dark" id="emptyClear" type="button">Clear filters</button></div>
+        <p class="demo-note media-demo-note">This page currently uses sample preview records and video links. Connect approved church accounts or an admin-managed content source before publishing real media.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand"><a class="brand brand-light" href="index.html#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v40M12 16h24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M7 35c5-7 11-10 17-10s12 3 17 10" fill="none" stroke="#c6a15b" stroke-width="2.2" stroke-linecap="round"/></svg></span><span class="brand-copy"><strong>GOSPEL</strong><small>OF PEACE COMMUNITY</small></span></a><p>A place of faith, hope, and love.<br>Growing together. Serving together.</p></div>
+      <div><small class="footer-heading">EXPLORE</small><a href="index.html#about">About us</a><a href="media.html">Messages</a><a href="index.html#events">Events</a><a href="index.html#gallery">Gallery</a></div>
+      <div><small class="footer-heading">CONNECT</small><a href="index.html#prayer">Prayer request</a><a href="index.html#live">Watch live</a><a href="index.html#contact">Contact</a></div>
+      <div><small class="footer-heading">A VERSE TO CARRY</small><p class="footer-verse">“The Lord bless you and keep you.”</p><b class="verse-ref">NUMBERS 6:24</b></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Gospel of Peace Community. All rights reserved.</span><span>Made with faith & purpose.</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <dialog class="media-dialog" id="videoDialog" aria-labelledby="videoDialogTitle">
+    <div class="media-dialog-head"><h2 id="videoDialogTitle">Now playing</h2><button type="button" id="closeVideo" class="modal-close" aria-label="Close video">×</button></div>
+    <div class="media-dialog-frame" id="videoFrame"></div>
+  </dialog>
+  <script src="media-data.js"></script>
+  <script src="media.js"></script>
+</body>
+</html>
