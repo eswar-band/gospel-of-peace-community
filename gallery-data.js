@@ -1,0 +1,9 @@
+/* Illustrative image records. Replace with church-owned, consent-cleared photographs. */
+window.GALLERY_ITEMS = Object.freeze([
+ {id:"community-sunday",title:"Community Sunday",category:"Community",description:"A moment of friendship and shared life.",image:"https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1400&q=85",alt:"People gathered together outdoors",date:"Sample image"},
+ {id:"worship-night",title:"Worship Night",category:"Worship",description:"A quiet moment of praise and reflection.",image:"https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1400&q=85",alt:"Church worship gathering",date:"Sample image"},
+ {id:"youth-gathering",title:"Youth Gathering",category:"Youth",description:"Friends sharing a joyful moment together.",image:"https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1400&q=85",alt:"Friends celebrating together",date:"Sample image"},
+ {id:"creation-praise",title:"Creation & Praise",category:"Outreach",description:"A reminder to pause and appreciate creation.",image:"https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=85",alt:"Mountain landscape under a starry sky",date:"Sample image"},
+ {id:"serving-together",title:"Serving Together",category:"Community",description:"A sample visual for community service.",image:"https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1400&q=85",alt:"Volunteers working together",date:"Sample image"},
+ {id:"gathered-in-prayer",title:"Gathered in Prayer",category:"Worship",description:"A sample visual for a time of prayer.",image:"https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1400&q=85",alt:"Open Bible and warm light",date:"Sample image"}
+]);
