@@ -1,0 +1,9 @@
+/* Illustrative catalog only. Add approved publications and authorized PDF URLs before publishing. */
+window.CHURCH_BOOKS = Object.freeze([
+ {id:"faith-foundations",title:"Foundations of Faith",author:"Community Resource Team",category:"Study Guides",type:"Study guide",year:2025,description:"An introductory outline for exploring core Christian beliefs, prayer and life in community.",cover:"navy"},
+ {id:"daily-hope",title:"A Daily Walk of Hope",author:"Editorial Sample",category:"Devotionals",type:"Devotional",year:2024,description:"A sample devotional collection format for short readings, reflection and prayer.",cover:"gold"},
+ {id:"peace-journal",title:"The Peace Journal",author:"Community Publications",category:"Magazines",type:"Magazine",year:2026,description:"A sample magazine entry for community updates, reflections and stories of encouragement.",cover:"green"},
+ {id:"prayer-guide",title:"Growing in Prayer",author:"Community Resource Team",category:"Prayer",type:"Prayer guide",year:2023,description:"A sample guide structure with prompts for personal prayer and group discussion.",cover:"plum"},
+ {id:"scripture-reflections",title:"Scripture Reflections",author:"Editorial Sample",category:"Study Guides",type:"Study guide",year:2025,description:"A sample resource entry for reading Scripture thoughtfully and discussing it together.",cover:"blue"},
+ {id:"community-bulletin",title:"Community Bulletin",author:"Community Publications",category:"Magazines",type:"Magazine",year:2026,description:"A sample bulletin entry for announcements, upcoming gatherings and community news.",cover:"rust"}
+]);
