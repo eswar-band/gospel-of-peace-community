@@ -34,3 +34,13 @@ html[data-theme="dark"] .events-library{background:var(--page)}html[data-theme="
 @media(max-width:900px){.events-list{grid-template-columns:1fr}.events-toolbar{grid-template-columns:1fr}.events-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.calendar-day{min-height:95px}}
 @media(max-width:650px){.events-heading{align-items:flex-start;flex-direction:column}.events-hero{padding:70px 0 58px}.events-verse{align-items:flex-start;flex-direction:column;gap:8px}.events-viewbar{align-items:flex-start;flex-direction:column}.events-viewbar-right{width:100%;justify-content:space-between}.events-toolbar{padding:15px}.events-filters{grid-template-columns:1fr}.events-calendar{padding:12px}.calendar-day{min-height:76px;padding:6px 3px}.calendar-weekdays span{font-size:.58rem}.calendar-event-chip{font-size:.54rem;padding:3px 2px}.calendar-more{font-size:.52rem}.calendar-day-number{font-size:.68rem}.events-invite-inner{align-items:flex-start;flex-direction:column}.events-invite{padding:52px 0}.event-dialog-head,.event-dialog-body{padding-left:20px;padding-right:20px}.event-dialog-footer{padding-left:20px;padding-right:20px}}
 @media(prefers-reduced-motion:reduce){.event-card{transition:none}.event-card:hover{transform:none}}
+
+/* Ensure view containers respect the hidden attribute even when grid display is declared. */
+.events-list[hidden],.events-calendar[hidden],.events-empty[hidden]{display:none!important}
+/* Homepage event cards open the shared event details dialog. */
+.event-row[role="button"]{cursor:pointer;outline:none;transition:background .2s ease,transform .2s ease}
+.event-row[role="button"]:hover{background:rgba(198,161,91,.07)}
+.event-row[role="button"]:focus-visible{outline:3px solid rgba(198,161,91,.65);outline-offset:4px;border-radius:8px}
+.event-row-open{color:#b18a43;font-size:17px;text-align:center}
+.featured-event[data-event-title]{cursor:pointer;outline:none}
+.featured-event[data-event-title]:focus-visible{outline:3px solid rgba(198,161,91,.7);outline-offset:4px}
