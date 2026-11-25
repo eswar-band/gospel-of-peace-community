@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ee">
+  <meta name="description" content="Explore upcoming gatherings, worship services and community events at Gospel of Peace Community.">
+  <title>Events & Calendar | Gospel of Peace Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="events.css">
+</head>
+<body class="events-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="announcement"><span class="live-dot"></span> Sunday Worship · 9:00 AM & 11:00 AM <a href="index.html#visit">Plan your visit <span aria-hidden="true">↗</span></a></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html#home" aria-label="Gospel of Peace Community home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v40M12 16h24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M7 35c5-7 11-10 17-10s12 3 17 10" fill="none" stroke="#c6a15b" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      <span class="brand-copy"><strong>GOSPEL</strong><small>OF PEACE COMMUNITY</small></span>
+    </a>
+    <div class="header-tools">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch theme"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span></button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    </div>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html#home">Home</a><a href="index.html#about">About</a><a href="media.html">Media</a><a href="testimonies.html">Stories</a><a class="active" href="events.html" aria-current="page">Events</a><a href="index.html#contact">Contact</a><a class="btn btn-gold nav-cta" href="index.html#prayer">Request Prayer <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="events-hero">
+      <div class="container events-hero-inner">
+        <div class="eyebrow"><span></span> GATHER · GROW · BELONG</div>
+        <h1>Make room for <em>meaningful moments.</em></h1>
+        <p>From Sunday worship to community celebrations, find a gathering where you can connect, grow and share life together.</p>
+        <div class="events-verse"><span>“Let us consider how we may spur one another on toward love and good deeds.”</span><b>HEBREWS 10:24</b></div>
+      </div>
+    </section>
+
+    <section class="events-library section-pad" aria-labelledby="events-title">
+      <div class="container">
+        <div class="events-heading">
+          <div><div class="eyebrow"><span></span> WHAT'S HAPPENING</div><h2 id="events-title">Find your next <em>gathering.</em></h2><p>Browse the calendar or explore events in a simple list.</p></div>
+          <p class="events-count" id="eventsCount" aria-live="polite">Loading events…</p>
+        </div>
+
+        <div class="events-toolbar">
+          <label class="events-search-label" for="eventSearch">Search events</label>
+          <div class="events-search"><span aria-hidden="true">⌕</span><input id="eventSearch" type="search" placeholder="Search by event, topic or venue…" autocomplete="off"></div>
+          <div class="events-filters">
+            <label>Category<select id="eventCategory"><option value="all">All categories</option></select></label>
+            <label>When<select id="eventStatus"><option value="upcoming">Upcoming events</option><option value="all">All events</option><option value="past">Past events</option></select></label>
+          </div>
+        </div>
+
+        <div class="events-viewbar">
+          <div class="events-view-tabs" role="group" aria-label="Choose event view">
+            <button type="button" class="events-view-button active" id="listViewButton" aria-pressed="true">☷ List view</button>
+            <button type="button" class="events-view-button" id="calendarViewButton" aria-pressed="false">▦ Calendar</button>
+          </div>
+          <div class="events-viewbar-right"><span id="eventsRangeLabel">Upcoming events</span><button type="button" class="events-clear" id="clearEventFilters">Clear filters ↺</button></div>
+        </div>
+
+        <div class="events-list" id="eventsList" aria-live="polite" aria-busy="true"></div>
+        <div class="events-calendar" id="eventsCalendar" hidden>
+          <div class="calendar-heading"><button type="button" id="previousMonth" aria-label="Previous month">←</button><h3 id="calendarMonthLabel">Month Year</h3><button type="button" id="nextMonth" aria-label="Next month">→</button></div>
+          <div class="calendar-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+          <div class="calendar-grid" id="calendarGrid" aria-label="Events calendar"></div>
+          <p class="calendar-hint">Select an event on the calendar to read its details.</p>
+        </div>
+
+        <div class="events-empty" id="eventsEmpty" hidden><span aria-hidden="true">✧</span><h3>No events found</h3><p>Try changing your search or filters to see more gatherings.</p><button type="button" class="btn btn-dark" id="clearEmptyEvents">Clear filters</button></div>
+        <p class="events-demo-note">Demo events and dates are provided for layout and interaction preview only. Confirm the real schedule, times, venues and registration details with your church team before publishing.</p>
+      </div>
+    </section>
+
+    <section class="events-invite">
+      <div class="container events-invite-inner"><div><div class="eyebrow light"><span></span> THERE'S A PLACE FOR YOU</div><h2>We look forward<br>to seeing <em>you.</em></h2><p>Have a question about an event? Get in touch and we'll be happy to help.</p></div><a class="btn btn-gold" href="index.html#contact">Contact the church <span>↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand"><a class="brand brand-light" href="index.html#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4v40M12 16h24" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M7 35c5-7 11-10 17-10s12 3 17 10" fill="none" stroke="#c6a15b" stroke-width="2.2" stroke-linecap="round"/></svg></span><span class="brand-copy"><strong>GOSPEL</strong><small>OF PEACE COMMUNITY</small></span></a><p>A place of faith, hope, and love.<br>Growing together. Serving together.</p></div>
+      <div><small class="footer-heading">EXPLORE</small><a href="index.html#about">About us</a><a href="media.html">Messages</a><a href="testimonies.html">Stories</a><a href="events.html">Events</a></div>
+      <div><small class="footer-heading">CONNECT</small><a href="index.html#prayer">Prayer request</a><a href="index.html#live">Watch live</a><a href="index.html#contact">Contact</a></div>
+      <div><small class="footer-heading">A VERSE TO CARRY</small><p class="footer-verse">“The Lord bless you and keep you.”</p><b class="verse-ref">NUMBERS 6:24</b></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Gospel of Peace Community. All rights reserved.</span><span>Made with faith & purpose.</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <dialog class="event-dialog" id="eventDialog" aria-labelledby="eventDialogTitle">
+    <div class="event-dialog-head"><div><span id="eventDialogCategory"></span><h2 id="eventDialogTitle">Event details</h2></div><button type="button" class="modal-close" id="closeEventDialog" aria-label="Close event details">×</button></div>
+    <div class="event-dialog-body"><div class="event-detail-meta"><span id="eventDialogDate"></span><span id="eventDialogTime"></span><span id="eventDialogVenue"></span></div><p id="eventDialogDescription"></p><div class="event-dialog-note" id="eventDialogNote"></div></div>
+    <div class="event-dialog-footer"><a class="btn btn-gold" href="index.html#contact">Ask about this event <span>↗</span></a></div>
+  </dialog>
+  <script src="events-data.js"></script>
+  <script src="events.js"></script>
+</body>
+</html>
