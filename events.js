@@ -51,8 +51,10 @@
   }
   function renderList(items) {
     list.replaceChildren(); items.forEach(event=>list.append(makeCard(event)));
-    list.hidden=view!=="list" || items.length===0;
-    calendar.hidden=view!=="calendar" || items.length===0;
+    list.hidden = view !== "list" || items.length === 0;
+    calendar.hidden = view !== "calendar" || items.length === 0;
+    list.setAttribute("aria-hidden", String(list.hidden));
+    calendar.setAttribute("aria-hidden", String(calendar.hidden));
     empty.hidden=items.length!==0;
     $("#eventsCount").textContent=items.length+" "+(items.length===1?"event":"events")+" found";
     $("#eventsRangeLabel").textContent=status.value==="past"?"Past events":status.value==="all"?"All events":"Upcoming events";
