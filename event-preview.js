@@ -21,8 +21,9 @@
     const event=byTitle.get(card.dataset.eventTitle.toLocaleLowerCase());
     if(!event) return;
     const activate=()=>openEvent(event);
-    card.addEventListener("click",activate);
+    card.addEventListener("click",e=>{if(e.target.closest("a,button")) return;activate();});
     card.addEventListener("keydown",e=>{
+      if(e.target.closest("a,button")) return;
       if(e.key==="Enter"||e.key===" "){e.preventDefault();activate();}
     });
   });
