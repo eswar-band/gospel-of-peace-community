@@ -51,6 +51,16 @@
     grid.replaceChildren();
     filtered.forEach(item => {
       const card = make("article","testimony-card");
+      card.setAttribute("role","button");
+      card.setAttribute("tabindex","0");
+      card.setAttribute("aria-label","Read full testimony: " + item.title);
+      card.addEventListener("click",() => openStory(item));
+      card.addEventListener("keydown",event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openStory(item);
+        }
+      });
       const top = make("div","testimony-card-top");
       top.append(make("span","testimony-category",item.category),make("time","testimony-date",dateLabel(item.publishedAt)));
       const quoteMark = make("div","testimony-quote-mark","“");
@@ -59,10 +69,8 @@
       const excerpt = make("p","",item.excerpt);
       const bottom = make("div","testimony-card-bottom");
       bottom.append(make("span","testimony-author",item.author));
-      const read = make("button","testimony-read","Read story ↗");
-      read.type = "button";
-      read.setAttribute("aria-label","Read full testimony: " + item.title);
-      read.addEventListener("click",() => openStory(item));
+      const read = make("span","testimony-read","Read full story ↗");
+      read.setAttribute("aria-hidden","true");
       bottom.append(read);
       card.append(top,quoteMark,title,excerpt,bottom);
       grid.append(card);

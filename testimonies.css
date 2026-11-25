@@ -27,8 +27,10 @@
 .testimonies-results{display:flex;justify-content:space-between;align-items:center;margin:30px 0 16px;color:var(--ink,#172338);font-size:.9rem;font-weight:700}
 .testimonies-results button{border:0;border-bottom:1px solid #c6a15b;padding:0 0 5px;background:none;color:#9b773d;font:inherit;font-size:.82rem;cursor:pointer}
 .testimonies-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.testimony-card{position:relative;display:flex;flex-direction:column;min-width:0;min-height:300px;padding:25px;border:1px solid var(--line,rgba(23,35,56,.1));border-radius:18px;background:var(--surface-solid,#fff);box-shadow:0 14px 36px rgba(23,35,58,.055);transition:transform .25s ease,box-shadow .25s ease}
+.testimony-card{position:relative;display:flex;flex-direction:column;min-width:0;min-height:300px;padding:25px;border:1px solid var(--line,rgba(23,35,56,.1));border-radius:18px;background:var(--surface-solid,#fff);box-shadow:0 14px 36px rgba(23,35,58,.055);cursor:pointer;outline:none;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
 .testimony-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(23,35,58,.11)}
+.testimony-card:focus-visible{border-color:#c6a15b;outline:3px solid rgba(198,161,91,.55);outline-offset:4px;box-shadow:0 18px 42px rgba(23,35,58,.14)}
+.testimony-card:focus-visible .testimony-read{text-decoration:underline;text-underline-offset:4px}
 .testimony-card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .testimony-category{padding:6px 10px;border-radius:99px;background:rgba(198,161,91,.13);color:#9b773d;font-size:.67rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .testimony-date{color:var(--muted,#7a8491);font-size:.72rem}
