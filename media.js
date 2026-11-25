@@ -34,7 +34,22 @@
     grid.replaceChildren();
     filtered.forEach(item => {
       const card = make("article","library-card");
+      card.tabIndex = 0;
+      card.setAttribute("role","button");
+      card.setAttribute("aria-label","Play video: " + item.title);
       const art = make("div","library-art library-art--" + item.art);
+      const thumbnailUrl = item.thumbnail || (item.platform === "YouTube" && item.videoId
+        ? "https://i.ytimg.com/vi/" + encodeURIComponent(item.videoId) + "/hqdefault.jpg"
+        : "");
+      if (thumbnailUrl) {
+        const thumbnail = make("img","library-thumbnail");
+        thumbnail.src = thumbnailUrl;
+        thumbnail.alt = "";
+        thumbnail.loading = "lazy";
+        thumbnail.decoding = "async";
+        thumbnail.addEventListener("error",() => thumbnail.remove(),{once:true});
+        art.append(thumbnail);
+      }
       const platformTag = make("span","library-platform",item.platform);
       const icon = make("span","library-art-icon","▶");
       icon.setAttribute("aria-hidden","true");
@@ -46,11 +61,18 @@
       meta.append(make("span","",item.category),make("span","",formatDate(item.publishedAt)));
       const title = make("h3","",item.title);
       const description = make("p","",item.description);
-      const watch = make("button","library-watch","▶  Watch message");
-      watch.type = "button";
-      watch.addEventListener("click",() => openVideo(item));
+      const watch = make("span","library-watch","▶  Play video");
+      watch.setAttribute("aria-hidden","true");
       body.append(meta,title,description,watch);
       card.append(art,body);
+      const play = () => openVideo(item);
+      card.addEventListener("click",play);
+      card.addEventListener("keydown",event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          play();
+        }
+      });
       grid.append(card);
     });
 

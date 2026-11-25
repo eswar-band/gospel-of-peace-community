@@ -64,3 +64,15 @@ html[data-theme="dark"] .media-library-heading h2,html[data-theme="dark"] .libra
 @media(max-width:900px){.media-library-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.media-controls{grid-template-columns:1fr}.media-selects{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){.media-library-heading{align-items:start;flex-direction:column}.media-library-grid{grid-template-columns:1fr}.media-selects{grid-template-columns:1fr}.media-controls{padding:15px}.media-hero{padding:70px 0 58px}.media-verse{align-items:flex-start;flex-direction:column;gap:8px}.library-art{min-height:170px}}
 @media(prefers-reduced-motion:reduce){.library-card{transition:none}.library-card:hover{transform:none}}
+
+/* Clickable cards and optional video thumbnails */
+.library-card{cursor:pointer;outline:none}
+.library-card:focus-visible{outline:3px solid #c6a15b;outline-offset:4px}
+.library-art{isolation:isolate}
+.library-thumbnail{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;object-position:center}
+.library-art:has(.library-thumbnail){background:#172338}
+.library-art:has(.library-thumbnail):before,.library-art:has(.library-thumbnail):after{display:none}
+.library-art:has(.library-thumbnail) .library-art-icon{background:rgba(8,13,22,.48);box-shadow:0 4px 24px rgba(0,0,0,.25)}
+.library-card:hover .library-art-icon,.library-card:focus-visible .library-art-icon{transform:scale(1.08);background:rgba(255,255,255,.24)}
+.library-art-icon{transition:transform .2s ease,background .2s ease}
+@media(prefers-reduced-motion:reduce){.library-art-icon{transition:none}}
