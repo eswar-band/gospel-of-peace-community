@@ -137,4 +137,9 @@
   }));
 
   render();
+  const requestedStory = new URLSearchParams(window.location.search).get("story");
+  if (requestedStory) {
+    const selectedStory = items.find(item => item.id === requestedStory);
+    if (selectedStory) openStory(selectedStory);
+  }
 })();
