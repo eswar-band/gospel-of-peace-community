@@ -41,3 +41,11 @@ html[data-theme=dark] .book-access-badge.is-paid{background:#493719;color:#f0ce8
 @media(max-width:600px){.books-controls{grid-template-columns:1fr}.books-search-field{grid-column:auto}}
 
 .book-unavailable a{display:inline-block;margin-left:10px;color:#a17b3b;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* Always-visible reset action for the book filters. */
+.books-filter-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:12px 2px 4px;color:var(--muted,#697386);font-size:.78rem}
+.books-clear-button{min-height:38px;padding:0 14px;border:1px solid var(--line,rgba(23,35,56,.18));border-radius:999px;background:transparent;color:var(--ink,#172338);font:700 .76rem "DM Sans",sans-serif;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.books-clear-button:hover{background:#172338;color:#fff;border-color:#172338}
+html[data-theme=dark] .books-clear-button{color:#edf0f4;border-color:rgba(255,255,255,.2)}
+html[data-theme=dark] .books-clear-button:hover{background:#dfbd78;color:#172338;border-color:#dfbd78}
+@media(max-width:600px){.books-filter-actions{align-items:flex-start;flex-direction:column}}
