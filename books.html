@@ -38,12 +38,16 @@
     <section class="books-library section-pad" aria-labelledby="booksTitle"><div class="container">
       <div class="books-heading"><div><div class="eyebrow"><span></span> THE READING ROOM</div><h2 id="booksTitle">Discover your next <em>read.</em></h2><p>Search the collection or browse by publication type.</p></div><p class="books-count" id="booksCount" aria-live="polite"></p></div>
       <div class="books-controls" aria-label="Filter publications">
-        <div class="books-filter-field books-search-field"><label for="bookSearch">Search publications</label><div class="books-search"><span aria-hidden="true">⌕</span><input id="bookSearch" type="search" placeholder="Search title, author or topic…" autocomplete="off"></div></div>
-        <div class="books-filter-field"><label for="bookCategory">Category</label><select id="bookCategory"><option value="all">All categories</option></select></div>
-        <div class="books-filter-field"><label for="bookAccess">Access</label><select id="bookAccess"><option value="all">Free & paid</option><option value="free">Free books</option><option value="paid">Paid books</option></select></div>
-        <div class="books-filter-field"><label for="bookSort">Sort by</label><select id="bookSort"><option value="title">Title A–Z</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></div>
+        <label class="books-search-label" for="bookSearch">Search publications</label>
+        <div class="books-search"><span aria-hidden="true">⌕</span><input id="bookSearch" type="search" placeholder="Search by title, author, or topic…" autocomplete="off"></div>
+        <div class="books-selects">
+          <label>Year<select id="bookYear"><option value="all">All years</option></select></label>
+          <label>Category<select id="bookCategory"><option value="all">All categories</option></select></label>
+          <label>Access<select id="bookAccess"><option value="all">Free & paid</option><option value="free">Free books</option><option value="paid">Paid books</option></select></label>
+          <label>Sort<select id="bookSort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="title">Title A–Z</option></select></label>
+        </div>
       </div>
-      <div class="books-filter-actions"><span>Adjust your filters to find a publication.</span><button class="books-clear-button" type="button" id="clearBooks">Clear filters ↺</button></div>
+      <div class="books-results"><span id="booksResultsLabel">Browse all publications</span><button type="button" id="clearBooks">Clear filters ↺</button></div>
       <div class="books-grid" id="booksGrid" aria-live="polite"></div>
       <div class="books-empty" id="booksEmpty" hidden><span aria-hidden="true">✧</span><h3>No publications found</h3><p>Try a different search term or category.</p><button class="btn btn-dark" type="button" id="clearEmptyBooks">Clear filters</button></div>
       <p class="books-demo-note">Sample entries are for layout preview. Free publications can be read without an account when an authorized reading file is supplied. Paid publications remain locked until secure member authentication and payment verification are connected. A browser-only membership flag is not used to grant paid access.</p>
