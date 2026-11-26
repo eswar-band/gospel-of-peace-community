@@ -33,8 +33,8 @@
    cover.append(make("span","cover-mark","✧"),make("span","cover-title",item.title),make("span","cover-kind",item.type));
    const copy=make("div","book-card-copy");
    copy.append(make("small","",item.category),make("h3","",item.title),make("p","book-author","By "+item.author),make("p","",item.description));
-   const actions=make("div","book-card-actions"),details=make("button","","View details ↗"),year=make("span","",String(item.year)),badge=make("span","book-access-badge "+((item.access||"free")==="paid"?"is-paid":"is-free"),(item.access||"free")==="paid"?"PAID":"FREE");
-   details.type="button";details.addEventListener("click",()=>open(item));actions.append(details,badge,year);copy.append(actions);card.append(cover,copy);grid.append(card);
+   const actions=make("div","book-card-actions"),details=make("span","book-card-action-label","View details ↗"),year=make("span","",String(item.year)),badge=make("span","book-access-badge "+((item.access||"free")==="paid"?"is-paid":"is-free"),(item.access||"free")==="paid"?"PAID":"FREE");
+   actions.append(details,badge,year);copy.append(actions);card.append(cover,copy);grid.append(card);
   });
   count.textContent=filtered.length+" "+(filtered.length===1?"publication":"publications");
   empty.hidden=filtered.length!==0;grid.hidden=filtered.length===0;
