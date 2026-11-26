@@ -23,7 +23,7 @@
   empty.hidden=filtered.length!==0;grid.hidden=filtered.length===0;
   categories.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String((b.textContent==="All moments"?"all":b.textContent)===category)));
  }
- function open(item){$("#galleryDialogCategory").textContent=item.category;$("#galleryDialogTitle").textContent=item.title;dialogImage.src=item.image;dialogImage.alt=item.alt;$("#galleryDialogCaption").textContent=item.description+" · "+item.date;if(typeof dialog.showModal==="function")dialog.showModal();else window.open(item.image,"_blank","noopener");}
+ function open(item){$("#galleryDialogCategory").textContent=item.category;$("#galleryDialogTitle").textContent=item.title;dialogImage.src=item.image;dialogImage.alt=item.alt;const displayDate=item.parsedDate&&!Number.isNaN(item.parsedDate.getTime())?item.parsedDate.toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"}):item.date;$("#galleryDialogCaption").textContent=item.description+" · "+displayDate;if(typeof dialog.showModal==="function")dialog.showModal();else window.open(item.image,"_blank","noopener");}
  function clearFilters(){search.value="";category="all";yearSelect.value="all";monthSelect.value="all";render();search.focus();}
  $("#clearGallery").addEventListener("click",clearFilters);
  $("#clearGalleryEmpty").addEventListener("click",clearFilters);
