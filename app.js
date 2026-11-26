@@ -70,43 +70,79 @@ $(".main-nav a").forEach(a => a.addEventListener("click", () => {
   menuToggle?.setAttribute("aria-expanded", "false");
 }));
 
-// Homepage scroll spy: keep the matching section link highlighted as visitors scroll.
-if ("IntersectionObserver" in window && mainNav) {
-  const sectionToLink = {
-    home:"#home", welcome:"#welcome", about:"#welcome", media:"#media",
-    stories:"#stories", events:"#events", gallery:"#gallery", live:"#live",
-    books:"#books", prayer:"#prayer", visit:"#visit", contact:"#contact"
-  };
-  const sectionIds = Object.keys(sectionToLink);
-  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-  const navLinks = $(".main-nav a[href^='#']", mainNav);
-  const setCurrent = id => {
-    const href = sectionToLink[id];
-    if (!href) return;
+// Homepage scroll spy: derive the active link from the last navigation section reached.
+if (mainNav) {
+  const navLinks = $(".main-nav a[href^='#']", mainNav).filter(link => !link.hasAttribute("data-open-member"));
+  const navTargets = navLinks.map(link => ({
+    link,
+    section: document.getElementById(decodeURIComponent(link.getAttribute("href").slice(1)))
+  })).filter(item => item.section);
+  let scrollSpyFrame = 0;
+  const updateCurrentNav = () => {
+    scrollSpyFrame = 0;
+    if (!navTargets.length) return;
+    const header = $(".site-header");
+    const activationLine = (header?.getBoundingClientRect().height || 0) + 28;
+    let current = navTargets[0];
+    for (const item of navTargets) {
+      if (item.section.getBoundingClientRect().top <= activationLine) current = item;
+      else break;
+    }
     navLinks.forEach(link => {
-      const active = link.getAttribute("href") === href;
+      const active = link === current.link;
       link.classList.toggle("active", active);
       if (active) link.setAttribute("aria-current", "location");
       else link.removeAttribute("aria-current");
     });
   };
-  const spy = new IntersectionObserver(entries => {
-    const visible = entries.filter(entry => entry.isIntersecting)
-      .sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
-    if (visible.length) setCurrent(visible[0].target.id);
-  }, { rootMargin:"-28% 0px -62% 0px", threshold:0 });
-  sections.forEach(section => spy.observe(section));
+  const scheduleNavUpdate = () => {
+    if (!scrollSpyFrame) scrollSpyFrame = window.requestAnimationFrame(updateCurrentNav);
+  };
+  window.addEventListener("scroll", scheduleNavUpdate, {passive:true});
+  window.addEventListener("resize", scheduleNavUpdate);
+  window.addEventListener("load", scheduleNavUpdate, {once:true});
+  scheduleNavUpdate();
 }
 
-// Media platform filters
-$$("[data-media-filter]").forEach(btn => btn.addEventListener("click", () => {
-  $$("[data-media-filter]").forEach(b => b.classList.remove("selected"));
-  btn.classList.add("selected");
-  const filter = btn.dataset.mediaFilter;
-  $$(".media-card").forEach(card => {
-    card.hidden = filter !== "all" && card.dataset.platform !== filter;
+// Homepage media filters and playback. Delegation keeps every rendered card interactive.
+const homeMediaGrid = $("#mediaGrid");
+const mediaFilterButtons = $$("[data-media-filter]");
+function setHomeMediaFilter(filter) {
+  mediaFilterButtons.forEach(button => {
+    const selected = button.dataset.mediaFilter === filter;
+    button.classList.toggle("selected", selected);
+    button.setAttribute("aria-pressed", String(selected));
   });
-}));
+  $$(".media-card", homeMediaGrid || document).forEach(card => {
+    const visible = filter === "all" || card.dataset.platform === filter;
+    card.hidden = !visible;
+  });
+}
+mediaFilterButtons.forEach(button => {
+  button.setAttribute("aria-pressed", String(button.dataset.mediaFilter === "all"));
+  button.addEventListener("click", () => setHomeMediaFilter(button.dataset.mediaFilter));
+});
+homeMediaGrid?.addEventListener("click", event => {
+  const card = event.target.closest(".media-card");
+  if (!card || card.hidden) return;
+  const playButton = card.querySelector("[data-video]");
+  if (!playButton) return;
+  if (event.target.closest(".media-info") || event.target.closest("[data-video]")) {
+    const url = playButton.dataset.video;
+    const frame = $("#videoFrame");
+    if (!url || !frame) return;
+    const safeUrl = new URL(url, window.location.href);
+    if (!["https:"].includes(safeUrl.protocol) || !["www.youtube.com","youtube.com"].includes(safeUrl.hostname)) return;
+    frame.innerHTML = "";
+    const iframe = document.createElement("iframe");
+    iframe.src = safeUrl.href + (safeUrl.search ? "&" : "?") + "autoplay=1&rel=0";
+    iframe.title = playButton.getAttribute("aria-label") || "Church media video";
+    iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+    iframe.allowFullscreen = true;
+    frame.append(iframe);
+    openModal("videoModal");
+  }
+});
 
 // Accessible modal helpers
 function openModal(id) {
@@ -127,11 +163,7 @@ function closeModals() {
 $$("[data-close-modal]").forEach(el => el.addEventListener("click", closeModals));
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModals(); });
 
-$$("[data-video]").forEach(btn => btn.addEventListener("click", () => {
-  const url = btn.dataset.video;
-  $("#videoFrame").innerHTML = `<iframe src="${url}?autoplay=1&rel=0" title="Church video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
-  openModal("videoModal");
-}));
+// Homepage video playback is handled by the media-grid delegated click listener above.
 $$("[data-image]").forEach(btn => btn.addEventListener("click", () => {
   $("#largeImage").src = btn.dataset.image;
   openModal("imageModal");
