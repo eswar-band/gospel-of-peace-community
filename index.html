@@ -150,10 +150,10 @@
           <div class="testimony-verse">“Give thanks to the Lord, for he is good; his love endures forever.”<b>PSALM 107:1</b></div>
         </div>
         <div class="story-list">
-          <a class="story-card" href="testimonies.html?story=peace-in-uncertainty" aria-label="Read full story: peace in uncertainty"><div class="story-number">01</div><div><small>NOVEMBER 2026 · FAITH</small><h3>Finding peace in an uncertain season</h3><p>“I learned that faith doesn't mean having every answer...”</p></div><span class="story-arrow">↗</span></a>
-          <a class="story-card" href="testimonies.html?story=new-family-beginning" aria-label="Read full story: new family beginning"><div class="story-number">02</div><div><small>OCTOBER 2026 · FAMILY</small><h3>A new beginning for our family</h3><p>“We found support, prayer, and a community that cared...”</p></div><span class="story-arrow">↗</span></a>
-          <a class="story-card" href="testimonies.html?story=hope-at-right-time" aria-label="Read full story: hope at right time"><div class="story-number">03</div><div><small>OCTOBER 2026 · HOPE</small><h3>Hope when I needed it most</h3><p>“A simple invitation became the start of something new...”</p></div><span class="story-arrow">↗</span></a>
-          <a class="story-card" href="testimonies.html?story=walking-together" aria-label="Read full story: walking together"><div class="story-number">04</div><div><small>SEPTEMBER 2026 · COMMUNITY</small><h3>Learning to walk together</h3><p>“I came looking for a church and found a family...”</p></div><span class="story-arrow">↗</span></a>
+          <a class="story-card" href="#stories" data-home-story="peace-in-uncertainty" aria-label="Read full story: peace in uncertainty"><div class="story-number">01</div><div><small>NOVEMBER 2026 · FAITH</small><h3>Finding peace in an uncertain season</h3><p>“I learned that faith doesn't mean having every answer...”</p></div><span class="story-arrow">↗</span></a>
+          <a class="story-card" href="#stories" data-home-story="new-family-beginning" aria-label="Read full story: new family beginning"><div class="story-number">02</div><div><small>OCTOBER 2026 · FAMILY</small><h3>A new beginning for our family</h3><p>“We found support, prayer, and a community that cared...”</p></div><span class="story-arrow">↗</span></a>
+          <a class="story-card" href="#stories" data-home-story="hope-at-right-time" aria-label="Read full story: hope at right time"><div class="story-number">03</div><div><small>OCTOBER 2026 · HOPE</small><h3>Hope when I needed it most</h3><p>“A simple invitation became the start of something new...”</p></div><span class="story-arrow">↗</span></a>
+          <a class="story-card" href="#stories" data-home-story="walking-together" aria-label="Read full story: walking together"><div class="story-number">04</div><div><small>SEPTEMBER 2026 · COMMUNITY</small><h3>Learning to walk together</h3><p>“I came looking for a church and found a family...”</p></div><span class="story-arrow">↗</span></a>
         </div>
       </div>
     </section>
@@ -258,7 +258,14 @@
     <div class="event-dialog-body"><div class="event-detail-meta"><span id="eventDialogDate"></span><span id="eventDialogTime"></span><span id="eventDialogVenue"></span></div><p id="eventDialogDescription"></p><div class="event-dialog-note" id="eventDialogNote"></div></div>
     <div class="event-dialog-footer"><a class="btn btn-gold" href="#contact">Ask about this event <span>↗</span></a></div>
   </dialog>
+  <dialog class="event-dialog" id="homeTestimonyDialog" aria-labelledby="homeTestimonyTitle">
+    <div class="event-dialog-head"><div><span id="homeTestimonyMeta"></span><h2 id="homeTestimonyTitle">Testimony</h2></div><button type="button" class="modal-close" id="closeHomeTestimony" aria-label="Close testimony">×</button></div>
+    <div class="event-dialog-body"><p id="homeTestimonyQuote" class="home-testimony-quote"></p><p id="homeTestimonyBody"></p><div class="event-dialog-note" id="homeTestimonyAuthor"></div></div>
+    <div class="event-dialog-footer"><a class="btn btn-gold" href="testimonies.html">Explore all stories <span>↗</span></a></div>
+  </dialog>
+  <script src="testimonies-data.js"></script>
   <script src="app.js"></script>
+  <script src="home-testimony.js"></script>
   <script src="events-data.js"></script>
   <script src="event-preview.js"></script>
 </body>
