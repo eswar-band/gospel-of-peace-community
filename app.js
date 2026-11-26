@@ -76,7 +76,7 @@ if (mainNav) {
   const navTargets = navLinks.map(link => ({
     link,
     section: document.getElementById(decodeURIComponent(link.getAttribute("href").slice(1)))
-  })).filter(item => item.section);
+  })).filter(item => item.section).sort((a, b) => a.section.offsetTop - b.section.offsetTop);
   let scrollSpyFrame = 0;
   const updateCurrentNav = () => {
     scrollSpyFrame = 0;
