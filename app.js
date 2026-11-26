@@ -65,7 +65,7 @@ menuToggle?.addEventListener("click", () => {
   const open = mainNav.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(open));
 });
-$(".main-nav a").forEach(a => a.addEventListener("click", () => {
+$$(".main-nav a").forEach(a => a.addEventListener("click", () => {
   mainNav.classList.remove("open");
   menuToggle?.setAttribute("aria-expanded", "false");
 }));
