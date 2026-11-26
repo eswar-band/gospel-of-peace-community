@@ -39,3 +39,5 @@ html[data-theme=dark] .book-access-badge.is-free{background:#183d2a;color:#a9e1b
 html[data-theme=dark] .book-access-badge.is-paid{background:#493719;color:#f0ce8a}
 @media(max-width:900px){.books-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.books-search-field{grid-column:1/-1}}
 @media(max-width:600px){.books-controls{grid-template-columns:1fr}.books-search-field{grid-column:auto}}
+
+.book-unavailable a{display:inline-block;margin-left:10px;color:#a17b3b;font-weight:700;text-decoration:underline;text-underline-offset:3px}
