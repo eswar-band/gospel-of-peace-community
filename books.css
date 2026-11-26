@@ -23,3 +23,21 @@ html[data-theme=dark] .books-library{background:var(--page)}html[data-theme=dark
 @media(max-width:900px){.books-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.books-controls{grid-template-columns:1fr 1fr}.books-search{grid-column:1/-1}}
 @media(max-width:600px){.books-heading{align-items:start;flex-direction:column}.books-grid{grid-template-columns:1fr}.books-controls{grid-template-columns:1fr;padding:15px}.books-search{grid-column:1}.books-hero{padding:70px 0 58px}.books-verse{align-items:flex-start;flex-direction:column;gap:8px}.book-dialog-body{grid-template-columns:1fr}.book-dialog-cover{min-height:170px}}
 @media(prefers-reduced-motion:reduce){.book-card{transition:none}}
+
+/* Filter alignment refinement: every control owns its label and field. */
+.books-controls{grid-template-columns:minmax(240px,1.5fr) repeat(3,minmax(145px,.72fr));align-items:end;gap:14px;padding:18px 20px}
+.books-filter-field{display:flex;min-width:0;flex-direction:column;gap:7px}
+.books-filter-field>label{color:var(--muted,#697386);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.books-search-field{grid-column:auto}
+.books-search{width:100%;min-height:48px}
+.books-filter-field select{width:100%;min-height:48px;margin:0;padding:0 12px;border:1px solid var(--line,rgba(23,35,56,.15));border-radius:10px;background:var(--surface-solid,#fff);color:var(--ink,#172338)}
+.book-card-actions{flex-wrap:wrap}
+.book-access-badge{padding:5px 9px;border-radius:999px;font-size:.62rem!important;font-weight:800;letter-spacing:.08em}
+.book-access-badge.is-free{background:#e6f3e9;color:#23633b}
+.book-access-badge.is-paid{background:#f8edd8;color:#865b17}
+html[data-theme=dark] .book-access-badge.is-free{background:#183d2a;color:#a9e1b8}
+html[data-theme=dark] .book-access-badge.is-paid{background:#493719;color:#f0ce8a}
+@media(max-width:900px){.books-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.books-search-field{grid-column:1/-1}}
+@media(max-width:600px){.books-controls{grid-template-columns:1fr}.books-search-field{grid-column:auto}}
+
+.book-unavailable a{display:inline-block;margin-left:10px;color:#a17b3b;font-weight:700;text-decoration:underline;text-underline-offset:3px}

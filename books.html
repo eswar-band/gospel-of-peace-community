@@ -37,17 +37,15 @@
     </div></section>
     <section class="books-library section-pad" aria-labelledby="booksTitle"><div class="container">
       <div class="books-heading"><div><div class="eyebrow"><span></span> THE READING ROOM</div><h2 id="booksTitle">Discover your next <em>read.</em></h2><p>Search the collection or browse by publication type.</p></div><p class="books-count" id="booksCount" aria-live="polite"></p></div>
-      <div class="books-controls">
-        <label class="books-search-label" for="bookSearch">Search publications</label>
-        <div class="books-search"><span aria-hidden="true">⌕</span><input id="bookSearch" type="search" placeholder="Search title, author or topic…" autocomplete="off"></div>
-        <label class="books-category-label" for="bookCategory">Category</label>
-        <select id="bookCategory"><option value="all">All publications</option></select>
-        <label class="books-sort-label" for="bookSort">Sort by</label>
-        <select id="bookSort"><option value="title">Title A–Z</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select>
+      <div class="books-controls" aria-label="Filter publications">
+        <div class="books-filter-field books-search-field"><label for="bookSearch">Search publications</label><div class="books-search"><span aria-hidden="true">⌕</span><input id="bookSearch" type="search" placeholder="Search title, author or topic…" autocomplete="off"></div></div>
+        <div class="books-filter-field"><label for="bookCategory">Category</label><select id="bookCategory"><option value="all">All categories</option></select></div>
+        <div class="books-filter-field"><label for="bookAccess">Access</label><select id="bookAccess"><option value="all">Free & paid</option><option value="free">Free books</option><option value="paid">Paid books</option></select></div>
+        <div class="books-filter-field"><label for="bookSort">Sort by</label><select id="bookSort"><option value="title">Title A–Z</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></div>
       </div>
       <div class="books-grid" id="booksGrid" aria-live="polite"></div>
       <div class="books-empty" id="booksEmpty" hidden><span aria-hidden="true">✧</span><h3>No publications found</h3><p>Try a different search term or category.</p><button class="btn btn-dark" type="button" id="clearBooks">Clear filters</button></div>
-      <p class="books-demo-note">This library currently contains illustrative sample entries only. No official church books, magazines or PDF files have been supplied yet. Replace these records with approved publications and verify authorship, publication details and distribution permissions before making files available.</p>
+      <p class="books-demo-note">Sample entries are for layout preview. Free publications can be read without an account when an authorized reading file is supplied. Paid publications remain locked until secure member authentication and payment verification are connected. A browser-only membership flag is not used to grant paid access.</p>
     </div></section>
   </main>
   <footer class="site-footer"><div class="container footer-main">
@@ -58,7 +56,7 @@
   </div><div class="container footer-bottom"><span>© 2026 Gospel of Peace Community. All rights reserved.</span><span>Made with faith & purpose.</span><a href="#top">Back to top ↑</a></div></footer>
   <dialog class="book-dialog" id="bookDialog" aria-labelledby="bookDialogTitle">
     <div class="book-dialog-head"><div><span id="bookDialogCategory"></span><h2 id="bookDialogTitle">Publication details</h2></div><button type="button" class="modal-close" id="closeBookDialog" aria-label="Close publication details">×</button></div>
-    <div class="book-dialog-body"><div class="book-dialog-cover" id="bookDialogCover" aria-hidden="true">✧</div><div><p class="book-dialog-author" id="bookDialogAuthor"></p><p id="bookDialogDescription"></p><p class="book-dialog-meta" id="bookDialogMeta"></p><div class="book-dialog-actions"><a class="btn btn-gold" id="bookReadLink" href="#" target="_blank" rel="noopener" hidden>Read PDF ↗</a><a class="btn btn-dark" id="bookDownloadLink" href="#" download hidden>Download PDF ↓</a><span class="book-unavailable" id="bookUnavailable">PDF not yet available</span></div></div></div>
+    <div class="book-dialog-body"><div class="book-dialog-cover" id="bookDialogCover" aria-hidden="true">✧</div><div><p class="book-dialog-author" id="bookDialogAuthor"></p><p id="bookDialogDescription"></p><p class="book-dialog-meta" id="bookDialogMeta"></p><div class="book-dialog-actions"><a class="btn btn-gold" id="bookReadLink" href="#" target="_blank" rel="noopener" hidden>Read PDF ↗</a><a class="btn btn-dark" id="bookDownloadLink" href="#" download hidden>Download PDF ↓</a><div class="book-unavailable" id="bookUnavailable">PDF not yet available <a id="bookMemberLink" href="index.html#member">Member sign in ↗</a></div></div></div></div>
   </dialog>
   <script src="books-data.js"></script><script src="books.js"></script>
 </body>
