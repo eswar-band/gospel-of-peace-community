@@ -1,7 +1,7 @@
 (() => {
  const $=(s,r=document)=>r.querySelector(s), items=Array.isArray(window.CHURCH_BOOKS)?window.CHURCH_BOOKS:[];
  const grid=$("#booksGrid"),search=$("#bookSearch"),category=$("#bookCategory"),access=$("#bookAccess"),sort=$("#bookSort"),count=$("#booksCount"),empty=$("#booksEmpty");
- const dialog=$("#bookDialog"),readLink=$("#bookReadLink"),downloadLink=$("#bookDownloadLink"),unavailable=$("#bookUnavailable");
+ const dialog=$("#bookDialog"),readLink=$("#bookReadLink"),downloadLink=$("#bookDownloadLink"),unavailable=$("#bookUnavailable"),memberLink=$("#bookMemberLink");
  const make=(tag,cls,txt)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(txt!==undefined)el.textContent=txt;return el;};
  [...new Set(items.map(x=>x.category))].sort().forEach(value=>{const option=make("option","",value);option.value=value;category.append(option);});
  async function open(item){
@@ -11,7 +11,7 @@
   $("#bookDialogDescription").textContent=item.description;
   $("#bookDialogMeta").textContent=item.type+" · "+item.year;
   $("#bookDialogCover").textContent="✧";
-  readLink.hidden=true;downloadLink.hidden=true;unavailable.hidden=false;
+  readLink.hidden=true;downloadLink.hidden=true;unavailable.hidden=false;memberLink.hidden=item.access!=="paid";
   unavailable.textContent=item.access==="paid"?"Paid membership required. Secure membership verification is not connected yet.":"Free to read — the authorized PDF has not been added yet.";
   let pdfUrl=null;
   if(item.access!=="paid"&&typeof item.pdfUrl==="string"&&/^https:\/\//i.test(item.pdfUrl))pdfUrl=item.pdfUrl;
