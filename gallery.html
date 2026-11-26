@@ -41,9 +41,10 @@
         <label class="gallery-search-label" for="gallerySearch">Search gallery</label>
         <div class="gallery-search"><span aria-hidden="true">⌕</span><input id="gallerySearch" type="search" placeholder="Search photos or gatherings…" autocomplete="off"></div>
         <div class="gallery-categories" id="galleryCategories" role="group" aria-label="Filter by category"></div>
+        <div class="gallery-date-filters"><label class="gallery-filter-field" for="galleryYear">Year<select id="galleryYear"><option value="all">All years</option></select></label><label class="gallery-filter-field" for="galleryMonth">Month<select id="galleryMonth"><option value="all">All months</option></select></label><button class="gallery-clear-button" type="button" id="clearGallery">Clear filters ↺</button></div>
       </div>
       <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
-      <div class="gallery-empty" id="galleryEmpty" hidden><span aria-hidden="true">✧</span><h3>No moments found</h3><p>Try another search or choose a different category.</p><button class="btn btn-dark" type="button" id="clearGallery">Clear filters</button></div>
+      <div class="gallery-empty" id="galleryEmpty" hidden><span aria-hidden="true">✧</span><h3>No moments found</h3><p>Try another search or choose a different category.</p><button class="btn btn-dark" type="button" id="clearGalleryEmpty">Clear filters</button></div>
       <p class="gallery-demo-note">Sample imagery is used for this preview and does not represent verified church events. Replace with church-owned photographs, confirm captions and dates, and obtain consent before publishing identifiable people.</p>
     </div></section>
   </main>
