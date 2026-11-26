@@ -49,3 +49,4 @@ html[data-theme=dark] .book-access-badge.is-paid{background:#493719;color:#f0ce8
 html[data-theme=dark] .books-clear-button{color:#edf0f4;border-color:rgba(255,255,255,.2)}
 html[data-theme=dark] .books-clear-button:hover{background:#dfbd78;color:#172338;border-color:#dfbd78}
 @media(max-width:600px){.books-filter-actions{align-items:flex-start;flex-direction:column}}
+\n/* Whole publication card is an accessible, keyboard-operable click target. */\n.book-card{cursor:pointer}.book-card:focus-visible{outline:3px solid #c6a15b;outline-offset:4px}.book-card-action-label{padding:0;color:#a17b3b;font-size:.75rem;font-weight:700}html[data-theme=dark] .book-card-action-label{color:#dfbd78}\n
