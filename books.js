@@ -29,7 +29,7 @@
   filtered.sort((a,b)=>sort.value==="newest"?b.year-a.year||a.title.localeCompare(b.title):sort.value==="oldest"?a.year-b.year||a.title.localeCompare(b.title):a.title.localeCompare(b.title));
   grid.replaceChildren();
   filtered.forEach(item=>{
-   const card=make("article","book-card"),cover=make("div","book-cover");
+   const card=make("article","book-card"),cover=make("div","book-cover");\n   card.tabIndex=0;card.setAttribute("role","button");card.setAttribute("aria-label","View details for "+item.title);card.addEventListener("click",()=>open(item));card.addEventListener("keydown",event=>{if(event.target!==card)return;if(event.key==="Enter"||event.key===" "){event.preventDefault();open(item);}});
    cover.append(make("span","cover-mark","✧"),make("span","cover-title",item.title),make("span","cover-kind",item.type));
    const copy=make("div","book-card-copy");
    copy.append(make("small","",item.category),make("h3","",item.title),make("p","book-author","By "+item.author),make("p","",item.description));
