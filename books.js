@@ -48,6 +48,7 @@
   search.focus();
 }
 $("#clearBooks").addEventListener("click",clearBookFilters);
+ $("#clearEmptyBooks")?.addEventListener("click",clearBookFilters);
  $("#closeBookDialog").addEventListener("click",()=>dialog.close());
  dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close();});
  search.addEventListener("input",render);category.addEventListener("change",render);access.addEventListener("change",render);sort.addEventListener("change",render);
