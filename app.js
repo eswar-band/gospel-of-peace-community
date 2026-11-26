@@ -170,6 +170,8 @@ $$("[data-member-tab]").forEach(btn => btn.addEventListener("click", () => {
     ? "Registration is a design preview. Connect verified registration and admin approval before launch."
     : "Member access is a design preview. Connect secure authentication before launch.";
 }));
+if (window.location.hash === "#member") openModal("memberModal");
+
 $("#memberForm")?.addEventListener("submit", e => {
   e.preventDefault();
   $("#memberMessage").textContent = "This is a front-end preview. Secure member authentication is not connected yet.";
