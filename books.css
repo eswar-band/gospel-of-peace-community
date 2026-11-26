@@ -66,3 +66,19 @@ html[data-theme="dark"] .books-results{color:#edf0f4}
 @media(max-width:1000px){.books-controls{grid-template-columns:1fr}.books-selects{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:650px){.books-heading{align-items:flex-start;flex-direction:column}.books-selects{grid-template-columns:repeat(2,minmax(0,1fr))}.books-results{gap:12px}}
 @media(max-width:420px){.books-selects{grid-template-columns:1fr}.books-results{align-items:flex-start;flex-direction:column}}
+
+
+/* Final alignment: mirror the Stories filter grid without fixed minimum widths. */
+.books-controls{grid-template-columns:minmax(0,1.1fr) minmax(0,1.6fr);align-items:end;}
+.books-search-label{grid-column:1/-1;}
+.books-controls>.books-search{grid-column:1;grid-row:2;width:100%;box-sizing:border-box;}
+.books-controls>.books-selects{grid-column:2;grid-row:2;min-width:0;width:100%;}
+.books-selects label{min-width:0;}
+.books-selects select{box-sizing:border-box;}
+@media(max-width:1000px){
+ .books-controls{grid-template-columns:minmax(0,1fr);}
+ .books-controls>.books-search{grid-column:1;grid-row:auto;}
+ .books-controls>.books-selects{grid-column:1;grid-row:auto;}
+}
+@media(max-width:650px){.books-selects{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:420px){.books-selects{grid-template-columns:minmax(0,1fr);}}
