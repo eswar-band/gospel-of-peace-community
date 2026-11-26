@@ -37,14 +37,19 @@
     </div></section>
     <section class="gallery-library section-pad" aria-labelledby="galleryTitle"><div class="container">
       <div class="gallery-heading"><div><div class="eyebrow"><span></span> COMMUNITY MOMENTS</div><h2 id="galleryTitle">A story in <em>every moment.</em></h2><p>Browse the collection by gathering or search for a moment.</p></div><p id="galleryCount" class="gallery-count" aria-live="polite"></p></div>
-      <div class="gallery-controls">
+      <div class="gallery-controls" aria-label="Filter gallery">
         <label class="gallery-search-label" for="gallerySearch">Search gallery</label>
-        <div class="gallery-search"><span aria-hidden="true">⌕</span><input id="gallerySearch" type="search" placeholder="Search photos or gatherings…" autocomplete="off"></div>
-        <div class="gallery-categories" id="galleryCategories" role="group" aria-label="Filter by category"></div>
-        <div class="gallery-date-filters"><label class="gallery-filter-field" for="galleryYear">Year<select id="galleryYear"><option value="all">All years</option></select></label><label class="gallery-filter-field" for="galleryMonth">Month<select id="galleryMonth"><option value="all">All months</option></select></label><button class="gallery-clear-button" type="button" id="clearGallery">Clear filters ↺</button></div>
+        <div class="gallery-search"><span aria-hidden="true">⌕</span><input id="gallerySearch" type="search" placeholder="Search by title, category, or description…" autocomplete="off"></div>
+        <div class="gallery-selects">
+          <label>Month<select id="galleryMonth"><option value="all">All months</option></select></label>
+          <label>Year<select id="galleryYear"><option value="all">All years</option></select></label>
+          <label>Category<select id="galleryCategory"><option value="all">All categories</option></select></label>
+          <label>Sort<select id="gallerySort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="title">Title A–Z</option></select></label>
+        </div>
       </div>
-      <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
-      <div class="gallery-empty" id="galleryEmpty" hidden><span aria-hidden="true">✧</span><h3>No moments found</h3><p>Try another search or choose a different category.</p><button class="btn btn-dark" type="button" id="clearGalleryEmpty">Clear filters</button></div>
+      <div class="gallery-results"><span id="galleryResultsLabel">Browse all moments</span><button type="button" id="clearGallery">Clear filters ↺</button></div>
+      <div class="gallery-grid" id="galleryGrid" aria-live="polite" aria-busy="true"></div>
+      <div class="gallery-empty" id="galleryEmpty" hidden><span aria-hidden="true">✧</span><h3>No moments found</h3><p>Try a different month, year, category, or search term.</p><button class="btn btn-dark" type="button" id="clearGalleryEmpty">Clear filters</button></div>
       <p class="gallery-demo-note">Sample imagery is used for this preview and does not represent verified church events. Replace with church-owned photographs, confirm captions and dates, and obtain consent before publishing identifiable people.</p>
     </div></section>
   </main>
