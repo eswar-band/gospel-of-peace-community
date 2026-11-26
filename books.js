@@ -39,7 +39,15 @@
   count.textContent=filtered.length+" "+(filtered.length===1?"publication":"publications");
   empty.hidden=filtered.length!==0;grid.hidden=filtered.length===0;
  }
- $("#clearBooks").addEventListener("click",()=>{search.value="";category.value="all";access.value="all";sort.value="title";render();search.focus();});
+ function clearBookFilters(){
+  search.value="";
+  category.value="all";
+  access.value="all";
+  sort.value="title";
+  render();
+  search.focus();
+}
+$("#clearBooks").addEventListener("click",clearBookFilters);
  $("#closeBookDialog").addEventListener("click",()=>dialog.close());
  dialog.addEventListener("click",e=>{if(e.target===dialog)dialog.close();});
  search.addEventListener("input",render);category.addEventListener("change",render);access.addEventListener("change",render);sort.addEventListener("change",render);
