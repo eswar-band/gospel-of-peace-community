@@ -5,15 +5,20 @@
  const make=(tag,cls,txt)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(txt!==undefined)el.textContent=txt;return el;};
  [...new Set(items.map(x=>x.category))].sort().forEach(value=>{const option=make("option","",value);option.value=value;category.append(option);});
  async function open(item){
-  $("#bookDialogCategory").textContent=item.category;
+  $("#bookDialogCategory").textContent=item.category+" · "+((item.access||"free")==="paid"?"PAID":"FREE");
   $("#bookDialogTitle").textContent=item.title;
   $("#bookDialogAuthor").textContent="By "+item.author;
   $("#bookDialogDescription").textContent=item.description;
   $("#bookDialogMeta").textContent=item.type+" · "+item.year;
   $("#bookDialogCover").textContent="✧";
-  const hasPdf=typeof item.pdfUrl==="string"&&/^https:\/\//i.test(item.pdfUrl);
-  readLink.hidden=!hasPdf;downloadLink.hidden=!hasPdf;unavailable.hidden=hasPdf;
-  if(hasPdf){readLink.href=item.pdfUrl;downloadLink.href=item.pdfUrl;downloadLink.download=(item.id||"publication")+".pdf";}
+  readLink.hidden=true;downloadLink.hidden=true;unavailable.hidden=false;
+  unavailable.textContent=item.access==="paid"?"Paid membership required. Secure membership verification is not connected yet.":"Free to read — the authorized PDF has not been added yet.";
+  let pdfUrl=null;
+  if(item.access!=="paid"&&typeof item.pdfUrl==="string"&&/^https:\/\//i.test(item.pdfUrl))pdfUrl=item.pdfUrl;
+  if(item.access==="paid"&&typeof window.GOPC_AUTH?.getProtectedBookUrl==="function"){
+   try{const protectedUrl=await window.GOPC_AUTH.getProtectedBookUrl(item.id);if(typeof protectedUrl==="string"&&/^https:\/\//i.test(protectedUrl))pdfUrl=protectedUrl;}catch(error){console.warn("Paid book access could not be verified.",error);}
+  }
+  if(pdfUrl){readLink.href=pdfUrl;downloadLink.href=pdfUrl;downloadLink.download=(item.id||"publication")+".pdf";readLink.hidden=false;downloadLink.hidden=false;unavailable.hidden=true;}
   if(typeof dialog.showModal==="function")dialog.showModal();
  }
  function render(){
@@ -46,4 +51,6 @@
  menu.addEventListener("click",()=>{const isOpen=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(isOpen));menu.setAttribute("aria-label",isOpen?"Close navigation":"Open navigation");});
  nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.setAttribute("aria-label","Open navigation");}));
  render();
+ const requestedBook=new URLSearchParams(window.location.search).get("book");
+ if(requestedBook){const selected=items.find(item=>item.id===requestedBook);if(selected)open(selected);}
 })();
