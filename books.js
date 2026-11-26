@@ -15,7 +15,8 @@
   unavailable.textContent=item.access==="paid"?"Paid membership required. Secure membership verification is not connected yet.":"Free to read — the authorized PDF has not been added yet.";
   let pdfUrl=null;
   if(item.access!=="paid"&&typeof item.pdfUrl==="string"&&/^https:\/\//i.test(item.pdfUrl))pdfUrl=item.pdfUrl;
-  // The auth adapter must verify an active paid membership server-side and return a short-lived protected URL.\n  // Never put a public/static paid PDF URL in the catalogue.\n  if(item.access==="paid"&&typeof window.GOPC_AUTH?.getProtectedBookUrl==="function"){
+  // The auth adapter must verify an active paid membership server-side and return a short-lived protected URL.\n  // Never put a public/static paid PDF URL in the catalogue.
+  if(item.access==="paid"&&typeof window.GOPC_AUTH?.getProtectedBookUrl==="function"){
    try{const protectedUrl=await window.GOPC_AUTH.getProtectedBookUrl(item.id);if(typeof protectedUrl==="string"&&/^https:\/\//i.test(protectedUrl))pdfUrl=protectedUrl;}catch(error){console.warn("Paid book access could not be verified.",error);}
   }
   if(pdfUrl){readLink.href=pdfUrl;downloadLink.href=pdfUrl;downloadLink.download=(item.id||"publication")+".pdf";readLink.hidden=false;downloadLink.hidden=false;unavailable.hidden=true;}
