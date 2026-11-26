@@ -65,10 +65,38 @@ menuToggle?.addEventListener("click", () => {
   const open = mainNav.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(open));
 });
-$$(".main-nav a").forEach(a => a.addEventListener("click", () => {
+$(".main-nav a").forEach(a => a.addEventListener("click", () => {
   mainNav.classList.remove("open");
   menuToggle?.setAttribute("aria-expanded", "false");
 }));
+
+// Homepage scroll spy: keep the matching section link highlighted as visitors scroll.
+if ("IntersectionObserver" in window && mainNav) {
+  const sectionToLink = {
+    home:"#home", welcome:"#welcome", about:"#welcome", media:"#media",
+    stories:"#stories", events:"#events", gallery:"#gallery", live:"#live",
+    books:"#books", prayer:"#prayer", visit:"#visit", contact:"#contact"
+  };
+  const sectionIds = Object.keys(sectionToLink);
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+  const navLinks = $(".main-nav a[href^='#']", mainNav);
+  const setCurrent = id => {
+    const href = sectionToLink[id];
+    if (!href) return;
+    navLinks.forEach(link => {
+      const active = link.getAttribute("href") === href;
+      link.classList.toggle("active", active);
+      if (active) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  };
+  const spy = new IntersectionObserver(entries => {
+    const visible = entries.filter(entry => entry.isIntersecting)
+      .sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible.length) setCurrent(visible[0].target.id);
+  }, { rootMargin:"-28% 0px -62% 0px", threshold:0 });
+  sections.forEach(section => spy.observe(section));
+}
 
 // Media platform filters
 $$("[data-media-filter]").forEach(btn => btn.addEventListener("click", () => {
