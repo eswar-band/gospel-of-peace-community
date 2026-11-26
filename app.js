@@ -72,7 +72,7 @@ $(".main-nav a").forEach(a => a.addEventListener("click", () => {
 
 // Homepage scroll spy: derive the active link from the last navigation section reached.
 if (mainNav) {
-  const navLinks = $(".main-nav a[href^='#']", mainNav).filter(link => !link.hasAttribute("data-open-member"));
+  const navLinks = $$(".main-nav a[href^='#']", mainNav).filter(link => !link.hasAttribute("data-open-member"));
   const navTargets = navLinks.map(link => ({
     link,
     section: document.getElementById(decodeURIComponent(link.getAttribute("href").slice(1)))
