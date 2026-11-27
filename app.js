@@ -179,7 +179,7 @@ $("#prayerForm")?.addEventListener("submit", e => {
   if (!formElement.reportValidity()) return;
 
   const feedback = $("#prayerFeedback");
-  if (!/^\\d{8,15}$/.test(PRAYER_WHATSAPP_NUMBER)) {
+  if (!/^\d{8,15}$/.test(PRAYER_WHATSAPP_NUMBER)) {
     feedback.textContent = "Prayer requests are not connected yet. Your message has not been sent. The church needs to configure its verified WhatsApp number first.";
     feedback.setAttribute("data-state", "pending");
     return;
