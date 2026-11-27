@@ -210,10 +210,9 @@ $("#prayerForm")?.addEventListener("submit", e => {
   const requestId = `PR-${dateStamp}-${uniqueSuffix}`;
   const confidential = form.get("confidential") ? "Yes" : "No";
   const message = [
-    "*GOSPEL OF PEACE COMMUNITY*",
-    "*PRAYER REQUEST*",
+    "✦ *GOSPEL OF PEACE COMMUNITY* ✦",
     "",
-    `*Request ID:* ${requestId}`,
+    `*Prayer Request ID:* ${requestId}`,
     `*Date & Time:* ${indiaDateTime} IST`,
     `*Name:* ${form.get("name") || "Not provided"}`,
     `*Address:* ${form.get("address") || "Not provided"}`,
@@ -228,6 +227,7 @@ $("#prayerForm")?.addEventListener("submit", e => {
   feedback.textContent = "WhatsApp is opening with your prepared request. Review the message and press Send in WhatsApp to submit it.";
   feedback.setAttribute("data-state", "ready");
   window.open(`https://wa.me/${PRAYER_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+  formElement.reset();
 });
 
 // Member modal preview
