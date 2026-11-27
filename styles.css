@@ -229,3 +229,28 @@ html[data-theme="dark"] .form-required-note{color:#b5c0ce}
 .check-label input[type="checkbox"]{display:block;flex:0 0 18px;width:18px;height:18px;margin:0;}
 .check-label span{display:block;flex:1;min-width:0;line-height:1.5;}
 @media(max-width:760px){.check-label{align-items:center!important;gap:10px}.check-label input[type="checkbox"]{flex-basis:18px;width:18px;height:18px;margin:0}}
+
+
+/* Consistent mobile filter/form sizing: prevents iOS Safari input-focus zoom. */
+@media (max-width: 760px) {
+  input[type="search"], input[type="text"], input[type="email"], input[type="tel"],
+  input[type="number"], input[type="url"], input[type="date"], textarea, select {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
+    font-size: 16px !important;
+  }
+  .media-controls, .testimonies-controls, .events-toolbar, .gallery-controls, .books-controls,
+  .media-search-wrap, .testimonies-search, .events-search, .gallery-search, .books-search {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .media-search-wrap input, .testimonies-search input, .events-search input,
+  .gallery-search input, .books-search input {
+    min-width: 0;
+    width: 100%;
+    font-size: 16px !important;
+  }
+}
+html { scroll-behavior: smooth; }
+#top { scroll-margin-top: 0; }
