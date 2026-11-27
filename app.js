@@ -216,6 +216,7 @@ $("#prayerForm")?.addEventListener("submit", e => {
     `*Request ID:* ${requestId}`,
     `*Date & Time:* ${indiaDateTime} IST`,
     `*Name:* ${form.get("name") || "Not provided"}`,
+    `*Address:* ${form.get("address") || "Not provided"}`,
     `*Mobile:* ${form.get("phone") || "Not provided"}`,
     `*Category:* ${form.get("category")}`,
     `*Confidential:* ${confidential}`,
