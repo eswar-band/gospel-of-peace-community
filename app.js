@@ -186,13 +186,42 @@ $("#prayerForm")?.addEventListener("submit", e => {
   }
 
   const form = new FormData(formElement);
+  const submittedAt = new Date();
+  const indiaDateTime = new Intl.DateTimeFormat("en-IN", {
+    dateStyle: "medium",
+    timeStyle: "short",
+    timeZone: "Asia/Kolkata"
+  }).format(submittedAt);
+  const indiaDateParts = new Intl.DateTimeFormat("en-CA", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    timeZone: "Asia/Kolkata"
+  }).formatToParts(submittedAt);
+  const datePart = Object.fromEntries(indiaDateParts.map(part => [part.type, part.value]));
+  const dateStamp = `${datePart.year}${datePart.month}${datePart.day}`;
+  const randomBytes = new Uint8Array(4);
+  if (window.crypto?.getRandomValues) {
+    window.crypto.getRandomValues(randomBytes);
+  } else {
+    randomBytes.forEach((_, index) => { randomBytes[index] = Math.floor(Math.random() * 256); });
+  }
+  const uniqueSuffix = [...randomBytes].map(value => value.toString(16).padStart(2, "0")).join("").toUpperCase();
+  const requestId = `PR-${dateStamp}-${uniqueSuffix}`;
+  const confidential = form.get("confidential") ? "Yes" : "No";
   const message = [
-    "Prayer request — Gospel of Peace Community",
-    `Name: ${form.get("name") || "Not provided"}`,
-    `Mobile: ${form.get("phone") || "Not provided"}`,
-    `Category: ${form.get("category")}`,
-    `Confidential: ${form.get("confidential") ? "Yes — please limit sharing" : "No preference stated"}`,
-    `Request: ${form.get("message")}`
+    "*GOSPEL OF PEACE COMMUNITY*",
+    "*PRAYER REQUEST*",
+    "",
+    `*Request ID:* ${requestId}`,
+    `*Date & Time:* ${indiaDateTime} IST`,
+    `*Name:* ${form.get("name") || "Not provided"}`,
+    `*Mobile:* ${form.get("phone") || "Not provided"}`,
+    `*Category:* ${form.get("category")}`,
+    `*Confidential:* ${confidential}`,
+    "",
+    "*PRAYER DETAILS*",
+    form.get("message")
   ].join("\n");
 
   feedback.textContent = "WhatsApp is opening with your prepared request. Review the message and press Send in WhatsApp to submit it.";
