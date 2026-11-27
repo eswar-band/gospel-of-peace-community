@@ -222,3 +222,10 @@ html[data-theme="dark"] .form-required-note{color:#b5c0ce}
   .prayer-form{padding:20px 15px}
   .prayer-grid{gap:24px}
 }
+
+
+/* Keep the confidentiality checkbox and its label text on one aligned row on mobile. */
+.check-label{display:flex!important;align-items:center!important;gap:10px;}
+.check-label input[type="checkbox"]{display:block;flex:0 0 18px;width:18px;height:18px;margin:0;}
+.check-label span{display:block;flex:1;min-width:0;line-height:1.5;}
+@media(max-width:760px){.check-label{align-items:center!important;gap:10px}.check-label input[type="checkbox"]{flex-basis:18px;width:18px;height:18px;margin:0}}
