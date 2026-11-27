@@ -193,3 +193,32 @@ html[data-theme="dark"] .home-book-dialog{background:#172338;color:#edf0f4}
   font-weight:600;
 }
 html[data-theme="dark"] .form-required-note{color:#b5c0ce}
+
+/* Prayer form: mobile-first sizing and overflow protection */
+.prayer-section{overflow:hidden}
+.prayer-grid{min-width:0}
+.prayer-grid>*{min-width:0}
+.prayer-form{width:100%;max-width:100%;min-width:0}
+.prayer-form label{min-width:0}
+.prayer-form input:not([type=checkbox]),
+.prayer-form textarea,
+.prayer-form select{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+@media(max-width:760px){
+  .prayer-section.section-pad{padding:64px 0}
+  .prayer-grid{grid-template-columns:minmax(0,1fr);gap:30px}
+  .prayer-form{padding:24px 20px;border-radius:16px}
+  .form-heading{gap:6px}
+  .form-heading small{font-size:10px;line-height:1.5}
+  .prayer-form label{font-size:12px;margin:15px 0}
+  .prayer-form input:not([type=checkbox]),
+  .prayer-form textarea,
+  .prayer-form select{font-size:16px;min-height:48px;padding:12px}
+  .prayer-form textarea{min-height:130px}
+  .check-label{align-items:flex-start!important;line-height:1.5}
+  .check-label input{flex:0 0 auto;margin-top:2px}
+  .form-submit{min-height:50px}
+}
+@media(max-width:390px){
+  .prayer-form{padding:20px 15px}
+  .prayer-grid{gap:24px}
+}
