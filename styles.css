@@ -176,3 +176,20 @@ html[data-theme="dark"] .skip-link{background:#f2d69c;color:#172338}
 .home-book-author,.home-book-access{color:var(--muted,#687486);font-size:.88rem}
 @media(max-width:560px){.home-book-dialog-body{grid-template-columns:1fr}.home-book-dialog-cover{min-height:160px}}
 html[data-theme="dark"] .home-book-dialog{background:#172338;color:#edf0f4}
+
+/* Prayer form required-field indicator */
+.prayer-form label .required-mark,
+.form-required-note .required-mark{
+  color:#c0443d!important;
+  font-weight:800!important;
+  font-size:13px;
+  margin-left:3px;
+}
+.form-required-note{
+  display:block;
+  margin-top:12px;
+  color:#77808d;
+  font-size:9px;
+  font-weight:600;
+}
+html[data-theme="dark"] .form-required-note{color:#b5c0ce}
