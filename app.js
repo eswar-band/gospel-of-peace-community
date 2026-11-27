@@ -169,22 +169,35 @@ $$("[data-image]").forEach(btn => btn.addEventListener("click", () => {
   openModal("imageModal");
 }));
 
-// Prayer request demo: opens WhatsApp with a prefilled message.
-// Replace this demo number with the church's WhatsApp number in international format.
+// Prayer request handoff.
+// Add the church's verified WhatsApp number in international format (digits only).
+// Keep this blank until the church confirms the correct destination; never use a placeholder number.
+const PRAYER_WHATSAPP_NUMBER = "";
 $("#prayerForm")?.addEventListener("submit", e => {
   e.preventDefault();
-  const form = new FormData(e.currentTarget);
+  const formElement = e.currentTarget;
+  if (!formElement.reportValidity()) return;
+
+  const feedback = $("#prayerFeedback");
+  if (!/^\\d{8,15}$/.test(PRAYER_WHATSAPP_NUMBER)) {
+    feedback.textContent = "Prayer requests are not connected yet. Your message has not been sent. The church needs to configure its verified WhatsApp number first.";
+    feedback.setAttribute("data-state", "pending");
+    return;
+  }
+
+  const form = new FormData(formElement);
   const message = [
     "Prayer request — Gospel of Peace Community",
     `Name: ${form.get("name") || "Not provided"}`,
     `Mobile: ${form.get("phone") || "Not provided"}`,
     `Category: ${form.get("category")}`,
-    `Confidential: ${form.get("confidential") ? "Yes" : "No"}`,
+    `Confidential: ${form.get("confidential") ? "Yes — please limit sharing" : "No preference stated"}`,
     `Request: ${form.get("message")}`
   ].join("\n");
-  const whatsappNumber = "910000000000"; // TODO: replace with church number; country code, no + or spaces.
-  $("#prayerFeedback").textContent = "Opening WhatsApp with your request. Press Send in WhatsApp to submit it.";
-  window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+
+  feedback.textContent = "WhatsApp is opening with your prepared request. Review the message and press Send in WhatsApp to submit it.";
+  feedback.setAttribute("data-state", "ready");
+  window.open(`https://wa.me/${PRAYER_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
 });
 
 // Member modal preview
