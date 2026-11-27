@@ -210,15 +210,24 @@
       <div class="container prayer-grid">
         <div><div class="eyebrow"><span></span> YOU DON'T HAVE TO WALK ALONE</div><h2>How can we<br><em>pray for you?</em></h2><p>Whatever you are facing, our prayer team would be honored to stand with you. Share your request with us.</p><div class="prayer-scripture">“Cast all your anxiety on him because he cares for you.”<b>1 PETER 5:7</b></div></div>
         <form class="prayer-form" id="prayerForm">
-          <div class="form-heading"><span>PRAYER REQUEST</span><small>Your request will be treated with care.</small></div>
-          <label>Your name <span>(optional)</span><input name="name" type="text" placeholder="How may we address you?"></label>
-          <label>Mobile number <span>(optional)</span><input name="phone" type="tel" placeholder="+91 00000 00000"></label>
-          <label>Prayer category<select name="category"><option>General prayer</option><option>Family</option><option>Health</option><option>Guidance</option><option>Thanksgiving</option><option>Other</option></select></label>
-          <label>Your prayer request<textarea name="message" required rows="4" placeholder="Share what is on your heart..."></textarea></label>
-          <label class="check-label"><input type="checkbox" name="confidential"> Please keep this request confidential.</label>
+          <div class="form-heading"><span>PRAYER REQUEST</span><small>Share only what you feel comfortable sharing.</small></div>
+          <label>Your name <span>(optional)</span><input name="name" type="text" autocomplete="name" maxlength="80" placeholder="How may we address you?"></label>
+          <label>Mobile number <span>(optional)</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" placeholder="+91 00000 00000"></label>
+          <label>Prayer category
+            <select name="category">
+              <option value="General prayer">General prayer</option>
+              <option value="Family">Family</option>
+              <option value="Health">Health</option>
+              <option value="Guidance">Guidance</option>
+              <option value="Thanksgiving">Thanksgiving</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <label>Your prayer request<textarea name="message" required minlength="8" maxlength="2000" rows="4" placeholder="Share what is on your heart..."></textarea></label>
+          <label class="check-label"><input type="checkbox" name="confidential" value="yes"> Please keep this request confidential.</label>
           <button class="btn btn-dark form-submit" type="submit">Send prayer request <span>↗</span></button>
-          <small class="form-privacy">This demo opens WhatsApp with a prefilled message. Connect the WhatsApp Business API for automatic delivery.</small>
-          <div class="form-feedback" id="prayerFeedback" role="status"></div>
+          <small class="form-privacy">This preview opens WhatsApp with a prepared message when the church number is configured. Nothing is sent until you press Send in WhatsApp. Automatic WhatsApp Business delivery needs a secure server integration.</small>
+          <div class="form-feedback" id="prayerFeedback" role="status" aria-live="polite"></div>
         </form>
       </div>
     </section>
