@@ -172,7 +172,7 @@ $$("[data-image]").forEach(btn => btn.addEventListener("click", () => {
 // Prayer request handoff.
 // Add the church's verified WhatsApp number in international format (digits only).
 // Keep this blank until the church confirms the correct destination; never use a placeholder number.
-const PRAYER_WHATSAPP_NUMBER = "";
+const PRAYER_WHATSAPP_NUMBER = "919441475075";
 $("#prayerForm")?.addEventListener("submit", e => {
   e.preventDefault();
   const formElement = e.currentTarget;
